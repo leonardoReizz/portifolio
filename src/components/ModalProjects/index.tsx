@@ -30,10 +30,11 @@ export function ModalProject({handleCloseModal, modalIsOpen, id}: ModalProjectPr
     
     const [data, setData] = useState<data>();
     useEffect(() => {
-      console.log(id)
       projectsData.map((data)=>data.id === id && setData(data))
     }, [modalIsOpen])
-      
+
+    Modal.setAppElement('#root');
+
     return (
         <Modal
           isOpen={modalIsOpen}

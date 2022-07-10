@@ -39,6 +39,7 @@ import { ModalProject } from "../../components/ModalProjects";
 export function Home(){
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [id, setId] = useState(1);
+    
     function handleOpenModal(id: number){
         setId(id)
         setModalIsOpen(true)
@@ -46,12 +47,18 @@ export function Home(){
     function handleCloseModal(){
         setModalIsOpen(false)
     }
-
+   
     return(
         <>
             <div className={styles.container}>
                 <Sidebar/>
-                <ModalProject modalIsOpen={modalIsOpen} handleCloseModal={handleCloseModal} id={id}/>
+                
+                <ModalProject 
+                    
+                    modalIsOpen={modalIsOpen}
+                    handleCloseModal={handleCloseModal} 
+                    id={id}
+                />
               
                 <div className={styles.content} id="home">
                     <div className={styles.details}>
@@ -68,18 +75,19 @@ export function Home(){
                     </div>
                 </div>
                      
-                      
-                  
-                        
                 <div className={styles.about} id="about">
                     <div className={styles.img}>
                         <img src={codeImg} alt="" />
                     </div>
                     <div className={styles.details}>
-                        <h1>Lorem ipsum dolor sit amet consectetur</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, similique quae aut nostrum at eaque debitis pariatur quisquam incidunt amet? Magni nostrum amet modi. Asperiores nulla numquam necessitatibus est amet.</p>
+                        <h1>Desenvolvedor Fron-end se Graduando em Sistemas de Informação</h1>
+                        <p>
+                            Olá, me chamo Leonardo Reis, tenho 20 anos e sou de Minas Gerais. 
+                        <br/>
+                        Procuro sempre me manter constantemente atualizado às novas tendências, realizei cursos pela RocketSeat e curso Sistemas de Informação
+                        </p>
                         <div className={styles.networking}>
-                            <h4>Minhas Redes</h4>
+                            <h4>Minhas Redes: </h4>
                             <div className={styles.icons}>
                                 <a href="https://github.com/leonardoReizz" target="_blank">
                                     <AiFillGithub/>
@@ -91,12 +99,12 @@ export function Home(){
                         </div>
                     </div>
                 </div>
-                           
-                        
-                  
-                <div className={styles.skillsContent} >
-                    <div className={styles.skills} id="skills">
+                               
+                <div className={styles.skillsContent} id="skills" >
+                        <h1>Skills</h1>
+                    <div className={styles.skills} >
                         <div className={styles.skill}>
+                            
                             <div className={styles.skillLogo}>
                                 <AiFillHtml5/>
                             </div>
@@ -146,9 +154,9 @@ export function Home(){
                         </div>
                     </div>
                 </div>
-                           
-                       
+                                  
                 <div className={styles.projectsContent} id="projects">
+                    <h1>Projetos</h1>
                     <div className={styles.projects} >
                         <div className={styles.project}>
                             <div className={styles.projectLogo}>
@@ -208,9 +216,6 @@ export function Home(){
                         </div>
                     </div>
                 </div>
-                        
-                
-                  
             </div>
         </>
     )
