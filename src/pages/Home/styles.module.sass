@@ -1,0 +1,305 @@
+@use "../../styles/_util" as *
+.container
+    width: 100vw
+    display: flex
+    flex-direction: column
+    align-items: center
+    overflow: hidden
+
+    .content
+        display: flex
+        justify-content: center
+        align-items: center
+        gap: 4rem
+        height: 800px
+       
+        @media (max-width: 930px)
+            flex-direction: column
+            height: 90vh
+           
+        .details
+            display: flex
+            flex-direction: column
+            align-items: center
+            color: $white
+
+            .title
+                max-width: 400px
+                display: flex
+                flex-direction: column
+                align-items: center
+
+                h1
+                    font-size: 8rem
+                    line-height: 7rem
+                    text-transform: uppercase
+                    margin: 0
+                    padding: 0
+                    @media (max-width: 930px)
+                        font-size: 5rem
+                        line-height: 5rem
+                
+                .animation
+                    animation: blinkCursor 500ms steps(60) infinite normal, typing 2s steps(60) 1s normal both
+
+                h2
+                    font-size: 1.4rem
+                    text-align: center
+                    white-space: nowrap
+                    overflow: hidden
+                    border-right: 2px solid $white
+                     
+                    @keyframes blinkCursor
+                        from
+                            border-right-color: rgba(255, 255, 255, 0.75)
+                        to
+                            border-right-color: transparent
+
+                    @keyframes typing
+                        from
+                            width: 0
+                        to
+                            width: 16.5em
+            
+            .linkAbout
+                margin-top: 2rem
+                a
+                    background-color: $yellow-200
+                    padding: .8rem 1.5rem
+                    color: $white
+                    font-weight: bold
+                    cursor: pointer
+
+                    transition: 0.2s ease-in-out
+
+                    &:hover
+                        filter: brightness(0.8)
+
+        .img
+            img
+                width: 300px
+                height: 300px
+                object-fit: cover
+                object-position: 0px -50px
+                display: flex
+                border-radius: 50rem
+                border: 10px solid $gray-500
+
+    .about
+        width: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        gap: 4rem
+        height: 700px
+        @media (max-width: 930px)
+            justify-content: center
+            flex-direction: column
+            align-items: center
+            height: 100vh
+        .img
+            img
+                width: 400px
+
+        .details
+            max-width: 400px
+            color: $white
+            display: flex
+            flex-direction: column
+           
+            .networking
+                margin-top: 2rem
+                .icons
+                    margin-top: 1rem
+                   
+                    a
+                        svg
+                            font-size: 2rem
+                        transition: 0.2s ease-in-out
+                       
+                        &:hover
+                            filter: brightness(0.8)
+                        &+a
+                            margin-left: 1rem
+    .skillsContent
+        height: 700px
+        display: flex
+        justify-content: center
+        align-items: center
+        @media (max-width: 752px)
+            height: 100%
+        .skills   
+            display: grid
+            grid-template-columns: repeat(4, 1fr)
+            gap: 2rem
+            @media (max-width: 752px)
+                height: 100%
+                grid-template-columns: repeat(3, 1fr)
+            @media (max-width: 553px)
+                grid-template-columns: repeat(2, 1fr)
+                margin-top: 2rem
+              
+               
+            .skill
+                display: flex
+                flex-direction: column
+                align-items: center
+                gap: 1rem
+                margin: 0 auto
+                @media (max-width: 935px)
+                    width: 160px
+                    margin-bottom: 1rem 
+            
+                h1
+                    color: $white
+                &:nth-child(1)
+                    .skillLogo
+                        background: $html
+                &:nth-child(2)
+                    .skillLogo
+                        background: $css
+                &:nth-child(3)
+                    .skillLogo
+                        background: $javascript
+                &:nth-child(4)
+                    .skillLogo
+                        background: $reactjs
+                &:nth-child(5)
+                    .skillLogo
+                        background: $typescript
+                &:nth-child(6)
+                    .skillLogo
+                        background: $sass
+                &:nth-child(7)
+                    .skillLogo
+                        background: $mongodb
+                &:nth-child(8)
+                    .skillLogo
+                        background: $mysql
+                       
+                @media (max-width: 553px)
+                    width: 160px
+                    margin-bottom: 1rem
+                    h1
+                        font-size: 1.2rem
+                    .skillLogo
+                        width: 100px
+                        height: 120px
+                        svg
+                            font-size: 3rem
+
+                .skillLogo
+                    height: 180px
+                    width: 140px
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    cursor: pointer
+                    &:hover
+                        filter: brightness(0.8)
+                    svg
+                        font-size: 3rem
+                        color: $white
+                    
+                    h1
+                        font-size: 1.2rem
+
+                    .skillLogo
+                        width: 140px
+                        height: 200px
+
+                        svg
+                            font-size: 3rem
+
+               
+
+    .projectsContent
+        width: 100vw
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 700px
+
+        @media (max-width: 930px)
+            height: 100%
+            margin-top: 5rem
+           
+        .projects
+            width: 100%
+            max-width: 1280px
+            display: grid
+            grid-template-columns: repeat(2, 1fr)
+            margin: 0 auto
+
+            @media (max-width: 930px)
+                grid-template-columns: repeat(1, 1fr)
+                margin-top: 0
+        
+            .project
+                display: flex
+                flex-direction: column
+                align-items: center
+                margin: 0 auto
+                
+                @media (max-width: 553px)
+                    &:first-child
+                        margin-top: 4rem
+                    &:last-child
+                        height: 25rem
+
+                h1
+                    color: $white
+
+                .projectLogo
+                    height: 250px
+                    width: 210px
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    cursor: pointer
+
+                    img
+                        width: 300px
+                        height: 200px
+                        border-radius: 1rem
+
+                        transition: 0.2s ease-in-out
+                        &:hover
+                            filter: brightness(0.8)
+        
+    
+    .contactsContent
+        height: 500px
+        display: flex
+        justify-content: center
+        align-items: center
+        .contacts
+            height: 300px
+            display: flex
+            justify-content: space-evenly
+            flex-direction: column
+            align-items: center
+            position: relative
+            color: $white
+
+            .contact
+                display: flex
+                flex-direction: column
+                text-align: center
+                font-size: 1.1rem
+                gap: .5rem
+                a
+                    transition: 0.2 ease-in-out   
+                    &:hover
+                        filter: brightness(0.6)
+                
+                        
+           
+      
+        
+        
+                
+
+
+            
+        

@@ -1,0 +1,100 @@
+@use "../../styles/_util" as *
+
+.overlay
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: #1f0d33bc
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 90vh
+    width: 100vw
+    z-index: 100
+    @media (max-width: 553px)
+        width: 100vw
+        height: 100vh
+        overflow: scroll
+
+    
+.content
+    background: $purple-900
+    width: 90%
+    height: 80%
+    border-radius: 2rem
+    position: relative
+    border: 0
+    outline: 0
+    z-index: 100
+    @media (max-width: 974px)
+        width: 100vw
+        height: 100vh
+        padding: 1rem
+        
+
+.container
+    width: 100%
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    color: $white
+    gap: 4rem
+    @media (max-width: 974px)
+        flex-direction: column
+        justify-content: space-between
+    .img
+        max-width: 500px
+        display: flex
+        justify-content: center
+        align-items: center
+        
+    .closeButton
+        position: absolute
+        top: 3rem
+        right: 3rem
+
+        @media (max-width: 974px)
+            margin-left: auto
+            position: relative
+            top: 3rem
+            right: 2rem
+
+        @media (max-width: 553px)
+            margin-left: auto
+            position: relative
+            top: 2rem
+            right: 1rem
+
+        button
+            padding: .7rem 1rem
+            background: $yellow-200
+            border-radius: 5rem
+            transition: 0.2s ease-in-out
+            &:hover
+                filter: brightness(0.8)
+
+    .details
+        padding-bottom: 5rem
+        display: flex
+        flex-direction: column
+        gap: 2rem
+        max-width: 500px
+        p
+            font-size: 1.2rem
+            @media (max-width: 974px)
+                font-size: 1rem
+        .detailsInfo
+            h3
+                margin-top: 1rem
+
+            span
+                font-size: 1.2rem
+                @media (max-width: 974px)
+                   font-size: 1.1rem
+            a
+                color: $yellow-200
+                &:hover
+                    text-decoration: underline
