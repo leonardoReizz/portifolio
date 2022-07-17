@@ -1,5 +1,5 @@
 # Meu Portfiolio
-Pagina Contruida em ReactJS
+Pagina Construida em ReactJS
 
 Acesse em: https://portifolio-roan-six.vercel.app/
 
