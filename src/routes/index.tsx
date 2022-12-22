@@ -1,10 +1,13 @@
-import { Route, Routes } from "react-router-dom";
-import App from "../App";
+import { Route, Routes } from 'react-router-dom';
+import { Home } from '../pages/Home';
+import { LayoutWithBars } from './LayoutWithBars';
 
 export function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route element={<LayoutWithBars />}>
+        <Route path="/" element={<Home />} />
+      </Route>
     </Routes>
   );
 }

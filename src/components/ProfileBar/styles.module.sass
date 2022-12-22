@@ -1,0 +1,88 @@
+@use '../../styles/_util' as *
+
+.profileBar
+  @include flex(flex-start, center, column)
+  background-color: $gray-800
+  width: 100%
+  min-width: 250px
+  flex: 1
+  min-height: 100vh
+
+  header
+    @include flex(center, center, column)
+    text-align: center
+    gap: 1rem
+    background-color: $gray-700
+    width: 100%
+    padding: 1rem
+
+    img
+      max-width: 100px
+      border-radius: 100%
+      max-width: 130px
+      max-height: 120px
+      width: auto
+      height: auto
+
+    p
+      color: $gray-500
+
+  main
+    @include flex(center, flex-start, column)
+    width: 100%
+    padding: 1rem
+
+    .list
+      ul
+        margin-left: 1rem
+        margin-top: 1rem
+
+        li
+          margin-top: .5rem
+          cursor: pointer
+          transition: color 0.2s ease
+          &:hover
+            color: $purple-100
+
+        a
+          @include flex(flex-start, center, row)
+          gap: .5rem
+
+          svg
+            font-size: 1.3rem
+            color: $purple-100
+
+    section
+      width: 100%
+      position: relative
+      &::before
+        content: ''
+
+        width: 100%
+        height: 1px
+        background-color: $gray-500
+
+        position: absolute
+        bottom: -20px
+
+      &:last-child
+        &::before
+          display: none
+
+    section+section
+      margin-top: 2rem
+
+    .cv
+      a
+        @include flex(flex-start, center, row)
+        font-weight: 600
+        text-transform: uppercase
+        gap: .5rem
+        cursor: pointer
+        transition: color 0.2s ease
+        &:hover
+          color: $purple-100
+          
+        svg
+          font-size: 1.2rem
+        
