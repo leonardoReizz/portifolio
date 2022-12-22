@@ -1,6 +1,8 @@
 import profilePicture from '@assets/profile.png';
 import { HiOutlineDownload } from 'react-icons/hi';
 import { BsCheck } from 'react-icons/bs';
+import { FaLinkedin } from 'react-icons/fa';
+import { AiOutlineGithub } from 'react-icons/ai';
 import styles from './styles.module.sass';
 
 export function ProfileBar() {
@@ -19,13 +21,13 @@ export function ProfileBar() {
           <h3>Skills</h3>
           <ul>
             <li>
-              <a href="">
+              <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
                 <BsCheck />
                 Typescript
               </a>
             </li>
             <li>
-              <a href="">
+              <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
                 <BsCheck />
                 ReactJS
               </a>
@@ -132,6 +134,11 @@ export function ProfileBar() {
           </a>
         </section>
       </main>
+
+      <footer>
+        <a href="">{<FaLinkedin />}</a>
+        <a href="">{<AiOutlineGithub />}</a>
+      </footer>
     </div>
   );
 }
