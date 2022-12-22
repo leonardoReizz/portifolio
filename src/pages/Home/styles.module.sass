@@ -1,2 +1,75 @@
+@use '../../styles/_util' as *
 .home
+  @include flex(flex-start, center, column)
   width: 100%
+  padding: 1rem
+  min-height: 100vh
+
+  header
+    @include flex(space-around, flex-start, column)
+    padding: 1rem
+    background-color: $gray-700
+    border-radius: $default-radius
+    min-height: 300px
+    width: 100%
+
+    p
+      display: flex
+      width: 100%
+      white-space: nowrap
+      word-wrap: break-word
+      overflow: hidden
+      .code
+        color: $purple-100
+    
+    button
+      background-color: $purple-100
+      padding: .8rem
+      width: 200px
+      border-radius: $default-radius
+      transition: filter 0.2s ease
+      &:hover
+        filter: brightness(0.8)
+
+    .dynamicText
+      display: flex
+      flex-direction: column
+      line-height: 20px
+      overflow: hidden
+      height: 20px
+
+      li
+        position: relative
+        top: 0
+        animation: slider 21s steps(3) infinite
+        
+        span
+          position: relative
+          
+          &::after
+            content: ''
+            position: absolute
+            left: 0
+            height: 100%
+            width: 100%
+            background: $gray-700
+            border-left: 2px solid $purple-100
+            animation: typing 7s steps(50) infinite
+
+@keyframes slider
+  100%
+    top: -60px
+
+@keyframes typing 
+  100%
+    left: 0
+    margin: 0
+  70%
+    left: 100%
+    margin: 0 -35px 0 15px
+  40%
+    left: 100%
+    margin: 0 -35px 0 15px
+  0%
+    left: 0
+    margin: 0
