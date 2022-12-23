@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { BsArrowRightShort } from 'react-icons/bs';
 import styles from './styles.module.sass';
 
 export function Home() {
@@ -42,7 +43,71 @@ export function Home() {
           Projetos
         </button>
       </header>
-      <main></main>
+      <main>
+        <div className={styles.experience}>
+          <div className={styles.item}>
+            <p>
+              <span>2+</span> Anos de experiencia
+            </p>
+          </div>
+          <div className={styles.item}>
+            <p>
+              <span>0</span> Projetos Completados
+            </p>
+          </div>
+          <div className={styles.item}>
+            <p>
+              <span>3</span> Cursos concluidos
+            </p>
+          </div>
+        </div>
+        <div className={styles.services}>
+          <div className={styles.box}>
+            <h3>Desenvolvimento Landing Pages</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima delectus provident
+              exercitationem saepe cupiditate tenetur excepturi ad quae doloribus quos. Quia
+              repellendus placeat aliquid recusandae dicta nihil ut vitae inventore!
+            </p>
+            <Link to="/contact">
+              Entre em contato <BsArrowRightShort />
+            </Link>
+          </div>
+          <div className={styles.box}>
+            <h3>Desenvolvimento Sistemas WEB</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima delectus provident
+              exercitationem saepe cupiditate tenetur excepturi ad quae doloribus quos. Quia
+              repellendus placeat aliquid recusandae dicta nihil ut vitae inventore!
+            </p>
+            <Link to="/contact">
+              Entre em contato <BsArrowRightShort />
+            </Link>
+          </div>
+          <div className={styles.box}>
+            <h3>Desenvolvimento Sistemas BackEnd</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima delectus provident
+              exercitationem saepe cupiditate tenetur excepturi ad quae doloribus quos. Quia
+              repellendus placeat aliquid recusandae dicta nihil ut vitae inventore!
+            </p>
+            <Link to="/contact">
+              Entre em contato <BsArrowRightShort />
+            </Link>
+          </div>
+          <div className={styles.box}>
+            <h3>Desenvolvimento de micro serviços</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima delectus provident
+              exercitationem saepe cupiditate tenetur excepturi ad quae doloribus quos. Quia
+              repellendus placeat aliquid recusandae dicta nihil ut vitae inventore!
+            </p>
+            <Link to="/contact">
+              Entre em contato <BsArrowRightShort />
+            </Link>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }

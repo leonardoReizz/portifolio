@@ -4,6 +4,8 @@
   width: 100%
   padding: 1rem
   min-height: 100vh
+  gap: 1rem
+  transition: all 0.8s ease-in-out
 
   header
     @include flex(space-around, flex-start, column)
@@ -55,6 +57,55 @@
             background: $gray-700
             border-left: 2px solid $purple-100
             animation: typing 7s steps(50) infinite
+
+  main
+    @include flex(center, center, column)
+    width: 100%
+    gap: 2rem
+    .experience
+      @include flex(center, center, row)
+      gap: 2rem
+
+      p
+        @include flex(center, center, row)
+        gap: .5rem
+
+        span
+          font-size: 1.8rem
+          font-weight: bold
+          color: $purple-100
+          
+    .services
+      display: grid
+      grid-template-columns: 1fr 1fr
+      gap: 1rem
+      width: 100%
+      transition: all 1s ease
+
+      @media (max-width: 698px)
+        grid-template-columns: 1fr 
+
+      .box
+        @include flex(space-around, flex-start, column)
+        height: 200px
+        width: 100%
+        background-color: $gray-700
+        border-radius: $default-radius
+        padding: 1rem
+        gap: 1rem
+        color: $gray-500
+
+        h3
+          color: $white
+
+        a
+          @include flex(center, center, row)
+          font-weight: bold
+          color: $purple-100
+          &:hover
+            text-decoration: underline
+          svg
+            font-size: 1.4rem
 
 @keyframes slider
   100%

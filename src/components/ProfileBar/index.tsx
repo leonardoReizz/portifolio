@@ -47,6 +47,12 @@ export function ProfileBar() {
             <li>
               <a href="">
                 <BsCheck />
+                PHP
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <BsCheck />
                 NodeJS
               </a>
             </li>

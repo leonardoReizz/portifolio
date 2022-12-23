@@ -4,8 +4,14 @@
   background-color: $gray-800
   min-height: 100vh
   width: 80px
-  transition: width 0.4s ease
+  transition: all 0.5s ease
 
+  @media (max-width: 1072px)
+    position: absolute
+    right: 0
+    width: 0
+    visibility: hidden
+    
   header
     @include flex(center, center, row)
     width: 100%
@@ -15,6 +21,14 @@
     button
       transition: all 0.6s ease
       transform: rotate(180deg)
+      
+      @media (max-width: 1072px)
+        position: absolute
+        opacity: 1 !important
+        visibility: visible !important
+        right: 20px
+        width: 30px
+
       svg
         font-size: 1.5rem
         transition: color 0.2s ease
@@ -68,6 +82,12 @@
           
 .navbar.open
   width: 350px
+  @media (max-width: 1072px)
+    position: absolute
+    width: 200px
+    opacity: 1
+    right: 0
+    visibility: visible
 
   header
     button

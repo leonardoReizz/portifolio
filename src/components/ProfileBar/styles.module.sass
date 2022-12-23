@@ -8,6 +8,12 @@
   flex: 1
   min-height: 100vh
   position: relative
+  transition: all 0.8s ease-in-out
+
+  @media (max-width: 977px)
+    min-width: 0px
+    opacity: 0
+    visibility: hidden
 
   header
     @include flex(center, center, column)
