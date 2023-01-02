@@ -29,7 +29,7 @@ export function Navbar() {
             <Link to="/">Historico</Link>
           </li>
           <li>
-            <Link to="/">Portifolio</Link>
+            <Link to="/projects">Portifolio</Link>
           </li>
           <li>
             <Link to="/">Contato</Link>

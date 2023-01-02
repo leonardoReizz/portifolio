@@ -52,12 +52,12 @@ export function Home() {
           </div>
           <div className={styles.item}>
             <p>
-              <span>0</span> Projetos Completados
+              <span>2</span> Projetos Completados
             </p>
           </div>
           <div className={styles.item}>
             <p>
-              <span>3</span> Cursos concluidos
+              <span>5</span> Cursos concluidos
             </p>
           </div>
         </div>

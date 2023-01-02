@@ -53,6 +53,12 @@ export function ProfileBar() {
             <li>
               <a href="">
                 <BsCheck />
+                Electron
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <BsCheck />
                 NodeJS
               </a>
             </li>
@@ -126,7 +132,10 @@ export function ProfileBar() {
               </a>
             </li>
             <li>
-              <a href="">
+              <a
+                href="https://drive.google.com/file/d/1Y9ZQIppV1upz1chBJZfcZH5Ixa6uoSOQ/view?usp=sharing "
+                target="_blank"
+                rel="noreferrer">
                 {' '}
                 <BsCheck />
                 Linux
@@ -142,8 +151,12 @@ export function ProfileBar() {
       </main>
 
       <footer>
-        <a href="">{<FaLinkedin />}</a>
-        <a href="">{<AiOutlineGithub />}</a>
+        <a href="https://www.linkedin.com/in/leonardoreiss/" target="_blank" rel="noreferrer">
+          {<FaLinkedin />}
+        </a>
+        <a href="https://github.com/leonardoReizz" target="_blank" rel="noreferrer">
+          {<AiOutlineGithub />}
+        </a>
       </footer>
     </div>
   );
