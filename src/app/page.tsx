@@ -15,24 +15,30 @@ import Link from "next/link";
 
 const projects = [
   {
+    title: "Imagine UI",
+    description: "Biblioteca de componentes para React",
+    link: "https://imagine-ui.com/",
+  },
+  {
     title: "Associacao Aconchego",
-    description: "native sec e um sistema",
+    description: "Landing page para associacao aconchego",
     link: "https://associacaoaconchego.com",
   },
   {
     title: "Nativesec",
-    description: "native sec e um sistema",
+    description:
+      "Aplicativo para guardar senha e informacoes sensiveis de forma segura.",
     link: " https://nativesec.io",
   },
   {
     title: "Gita",
-    description: "gita e um sistema para monitoramento kubernerts",
-    link: "",
+    description: "Sistema de observabilidade para ambientes Kubernetes",
+    link: "https://site.gita.jackexperts.com.br/",
   },
   {
-    title: "OLT Manager",
-    description: "Sistema de gerenciamento para provedores GPON e EPON",
-    link: "",
+    title: "Eslint-config",
+    description: "Configuracao pronta para eslint-react,node e next",
+    link: "https://www.npmjs.com/package/@leonardo-reis/eslint-config",
   },
 ];
 
