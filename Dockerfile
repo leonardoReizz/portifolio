@@ -8,8 +8,6 @@ RUN npm install
 
 COPY . .
 
-ENV HOST=0.0.0.0 PORT=3000 NODE_ENV=production
-
 RUN npm run build
 
 EXPOSE 3000
