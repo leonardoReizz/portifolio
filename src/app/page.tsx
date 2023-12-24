@@ -11,19 +11,28 @@ import {
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiVite, SiNestjs, SiMongodb, SiTailwindcss } from "react-icons/si";
 import { GrMysql } from "react-icons/gr";
+import Link from "next/link";
 
 const projects = [
   {
+    title: "Associacao Aconchego",
+    description: "native sec e um sistema",
+    link: "https://associacaoaconchego.com",
+  },
+  {
     title: "Nativesec",
     description: "native sec e um sistema",
+    link: " https://nativesec.io",
   },
   {
     title: "Gita",
     description: "gita e um sistema para monitoramento kubernerts",
+    link: "",
   },
   {
     title: "OLT Manager",
     description: "Sistema de gerenciamento para provedores GPON e EPON",
+    link: "",
   },
 ];
 
@@ -81,60 +90,90 @@ export default function Home() {
             <p className="text-zinc-500">Desenvolvedor Typescript Fullstack</p>
           </div>
         </div>
-        <div className="flex gap-4 ">
-          <button className="hover:bg-zinc-800/50 flex  gap-2 items-center py-2 px-6 rounded-md hover:text-indigo-500 transition-all duration-200">
+        <div className="flex flex-wrap gap-4 max-md:justify-center">
+          <Link
+            href="https://www.linkedin.com/in/leonardoreiss/"
+            target="_blank"
+            className="hover:bg-zinc-800/50 flex  max-w-[150px] flex-[1_1_150px] gap-2 items-center py-2 justify-center rounded-md hover:text-indigo-500 transition-all duration-200"
+          >
             <FaLinkedin className="w-5 h-5" />
             <p>Linkedin</p>
-          </button>
-          <button className="hover:bg-zinc-800/50 flex  gap-2 items-center py-2 px-6 rounded-md hover:text-indigo-500 transition-all duration-200">
+          </Link>
+          <Link
+            href="https://github.com/leonardoReizz"
+            target="_blank"
+            className="hover:bg-zinc-800/50 flex  max-w-[150px] flex-[1_1_150px] gap-2 items-center py-2 justify-center rounded-md hover:text-indigo-500 transition-all duration-200"
+          >
             <FaGithub className="w-5 h-5" />
             <p>Github</p>
-          </button>
-          <button className="hover:bg-zinc-800/ flex  gap-2 items-center py-2 px-6 rounded-md hover:text-indigo-500 transition-all duration-200">
+          </Link>
+          <Link
+            target="_blank"
+            href="https://twitter.com/leonardooreizz"
+            className="hover:bg-zinc-800/50 flex  max-w-[150px] flex-[1_1_150px] gap-2 items-center py-2 justify-center rounded-md hover:text-indigo-500 transition-all duration-200"
+          >
             <FaTwitter className="w-5 h-5" />
             <p>Twitter</p>
-          </button>
-          <button className="hover:bg-zinc-800/50 flex  gap-2 items-center py-2 px-6 rounded-md hover:text-indigo-500 transition-all duration-200">
+          </Link>
+          <Link
+            target="_blank"
+            href="https://twitter.com/leonardooreizz"
+            className="hover:bg-zinc-800/50 flex  max-w-[150px] flex-[1_1_150px] gap-2 items-center py-2 justify-center rounded-md hover:text-indigo-500 transition-all duration-200"
+          >
             <MdEmail className="w-5 h-5" />
             <p>Email</p>
-          </button>
+          </Link>
         </div>
       </div>
       <div className="border p-4 rounded-md border-zinc-800 text-zinc-400">
-        <h5 className="text-indigo-500 font-bold text-lg">About Me</h5>
+        <h5 className="text-indigo-500 font-bold text-lg">Sobre Mim</h5>
         <p className="mt-4">
-          Hello, I am a technology enthusiast who is constantly seeking new
-          opportunities to learn and grow professionally. Currently, I possess
-          skills in Next, React, Node.js, among other cutting-edge stacks in the
-          market. Currently, I am a Freelance Developer who performs live coding
-          with the intention of helping my community with tips on React, Next,
-          Node, and many other technologies. We are also creating an Open Source
-          project
+          Sou um entusiasta da tecnologia, mergulhado no universo do
+          desenvolvimento. Com especialização em Typescript , minha jornada
+          acadêmica em Sistemas de Informação é apenas o início da minha busca
+          por conhecimento. Com mais de dois anos de experiência, destaco-me na
+          criação de APIs, microserviços e interfaces front-end. Meu domínio em
+          tecnologias como Node.js, React, MongoDB e MySQL é evidente, e meu
+          foco atual é aprimorar minhas habilidades e conceitos, para continuar
+          sempre evoluindo e contruindo projetos sustentaveis. Meus projetos no
+          GitHub são a expressão do meu compromisso com o aprendizado constante
+          e meu entusiasmo por colaborações no cenário do desenvolvimento de
+          software.
         </p>
       </div>
 
-      <div className="flex gap-8 border-zinc-800 text-zinc-400">
-        <div className="rounded-md w-full flex flex-col gap-4">
-          <h5 className=" font-semibold text-zinc-200 text-lg group-hover:text-indigo-500 transition-all">
-            Projetos
-          </h5>
+      <div className="flex gap-8 border-zinc-800 text-zinc-400 max-md:flex-col">
+        <div className="rounded-md w-full flex flex-col gap-4 ">
+          <div className="flex justify-between align-center">
+            <h5 className=" font-semibold text-zinc-200 text-lg group-hover:text-indigo-500 transition-all">
+              Projetos
+            </h5>
+            <Link
+              href="/projects"
+              className="text-sm hover:text-indigo-500 hover:underline leading-7"
+            >
+              Ver Mais
+            </Link>
+          </div>
           {projects.map((project) => {
             return (
-              <div
+              <Link
+                href={project.link}
                 key={project.title}
+                target="_blank"
                 className="flex flex-col bg-zinc-800/25 p-4 cursor-pointer rounded-md border border-zinc-800 group hover:bg-zinc-800/50 transition-all "
               >
                 <h5 className=" font-semibold text-zinc-200 text-lg group-hover:text-indigo-500 transition-all">
                   {project.title}
                 </h5>
                 <p className="text-sm">{project.description}</p>
-              </div>
+              </Link>
             );
           })}
         </div>
         <div className="rounded-md w-full flex flex-col gap-4">
           <h5 className=" w-full font-semibold text-zinc-200 text-lg group-hover:text-indigo-500 transition-all">
-            Stacks
+            Principais Stacks
           </h5>
           <div className="flex flex-wrap gap-4">
             {stacks.map((stack) => {

@@ -1,25 +1,23 @@
 import Link from "next/link";
+import { FaDev } from "react-icons/fa";
 
 export function Sidebar() {
   return (
-    <div className="flex items-center justify-between w-full h-[100px]">
-      <h3 className="text-2xl">Leonardo</h3>
+    <div className="flex fixed z-[100] bg-zinc-900/75 backdrop-blur-md px-4 items-center justify-between w-full h-[70px]">
+      <Link href="/" className="flex items-center gap-2">
+        <FaDev className="w-6 h-6 " />
+        <h3 className="text-xl">Leonardo Reis</h3>
+      </Link>
       <ul className="flex gap-4 ">
         <li className="text-zinc-400 hover:text-white">
-          <Link href="about">Home</Link>
+          <Link href="/">Inicio</Link>
         </li>
         <li className="text-zinc-400 hover:text-white">
-          <Link href="about">About</Link>
+          <Link href="projects">Projetos</Link>
         </li>
-        <li className="text-zinc-400 hover:text-white">
-          <Link href="about">Resume</Link>
-        </li>
-        <li className="text-zinc-400 hover:text-white">
-          <Link href="about">Works</Link>
-        </li>
-        <li className="text-zinc-400 hover:text-white">
+        {/* <li className="text-zinc-400 hover:text-white">
           <Link href="about">Blog</Link>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
