@@ -1,3 +1,6 @@
 {
-  "extends": "@leonardo-reis/eslint-config/next"
+  "extends": "@leonardo-reis/eslint-config/next",
+  "rules": {
+    "react/no-unknown-property": "off"
+  }
 }
