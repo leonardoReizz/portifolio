@@ -20,9 +20,11 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-zinc-950 text-white  flex flex-col items-center justify-start`}
       >
-        <div className="max-w-5xl w-full ">
+        <div className="w-full h-full">
           <Sidebar />
-          <div className="w-full h-full p-4 mt-[70px]">{children}</div>
+          <div className="w-full h-full flex items-start justify-center  mt-[70px]">
+            <div className="w-full h-full max-w-5xl p-4 ">{children}</div>
+          </div>
         </div>
       </body>
     </html>
