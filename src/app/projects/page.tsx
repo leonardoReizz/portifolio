@@ -1,57 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { PiProjectorScreenFill } from "react-icons/pi";
 import { SiNpm } from "react-icons/si";
-
-const projects = [
-  {
-    title: "Imagine UI",
-    image: "imagineui.png",
-    description:
-      "Explore a biblioteca exclusiva de componentes React Imagine UI, criada meticulosamente com Tailwind CSS para potencializar seu desenvolvimento.",
-    githubLink: "https://github.com/leonardoReizz/imagine-ui",
-    projectLink: "http://imagine-ui.com/",
-    npmLink: "https://www.npmjs.com/package/@imagine-ui/react",
-  },
-  {
-    title: "Associacao Aconchego",
-    image: "aconchego.png",
-    description:
-      "A Aconchego é uma iniciativa sem fins lucrativos dedicada a fazer a diferença na vida de famílias economicamente vulneráveis, que enfrentam desafios especiais devido a membros com necessidades especiais, em particular aqueles afetados pelo Transtorno do Espectro Autista (TEA).",
-    projectLink: "https://associacaoaconchego.com/",
-  },
-  {
-    title: "NativeSec",
-    image: "nativesec.png",
-    description:
-      "Proteja suas senhas com criptografia de ponta e organize grupos ilimitados com o Nativesec. Mantenha-se seguro usando o OpenPGP reconhecido mundialmente.",
-    githubLink: "https://github.com/Nativesec/nativesec-desktop",
-    projectLink: "https://nativesec.io/",
-  },
-  {
-    title: "Gita",
-    image: "gita.png",
-    description:
-      "Obtenha visibilidade total e gerencie saúde e segurança em clusters Kubernetes. Identifique e resolva problemas com base em práticas sólidas e documentação detalhada.",
-    projectLink: "https://site.gita.jackexperts.com.br",
-  },
-  {
-    title: "Portifolio",
-    description:
-      "Explore meu portfólio detalhado e dinâmico. Descubra meu trabalho, habilidades e projetos, tudo em um site intuitivo e personalizado.",
-    githubLink: "https://github.com/leonardoReizz/portifolio",
-    projectLink: "https://leonardo-reis.com",
-  },
-  {
-    title: "Eslint Config",
-    description:
-      "Configuração pronta para ESLint em Node, React e Next.js. Simplifique seu desenvolvimento com uma configuração prévia, disponível no npm.",
-    githubLink: "https://github.com/leonardoReizz/portifolio",
-    projectLink: "https://leonardo-reis.com",
-    npmLink: "https://www.npmjs.com/package/@leonardo-reis/eslint-config",
-  },
-];
+import { projects } from "../utils/projects";
 
 export default function Projects() {
   return (

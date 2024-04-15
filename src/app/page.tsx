@@ -1,199 +1,342 @@
-import { MdEmail } from "react-icons/md";
-import {
-  FaTwitter,
-  FaGithub,
-  FaLinkedin,
-  FaReact,
-  FaPython,
-  FaNodeJs,
-  FaSass,
-} from "react-icons/fa";
-import { TbBrandNextjs } from "react-icons/tb";
-import { SiVite, SiNestjs, SiMongodb, SiTailwindcss } from "react-icons/si";
-import { GrMysql } from "react-icons/gr";
+"use client";
+
+import { FcBusiness } from "react-icons/fc";
 import Link from "next/link";
-
-const projects = [
-  {
-    title: "Imagine UI",
-    description: "Biblioteca de componentes para React",
-    link: "https://imagine-ui.com/",
-  },
-  {
-    title: "Associacao Aconchego",
-    description: "Landing page para associacao aconchego",
-    link: "https://associacaoaconchego.com",
-  },
-  {
-    title: "Nativesec",
-    description:
-      "Aplicativo para guardar senha e informacoes sensiveis de forma segura.",
-    link: " https://nativesec.io",
-  },
-  {
-    title: "Gita",
-    description: "Sistema de observabilidade para ambientes Kubernetes",
-    link: "https://site.gita.jackexperts.com.br/",
-  },
-  {
-    title: "Eslint-config",
-    description: "Configuracao pronta para eslint-react,node e next",
-    link: "https://www.npmjs.com/package/@leonardo-reis/eslint-config",
-  },
-];
-
-const stacks = [
-  {
-    title: "React",
-    icon: <FaReact className="w-10 h-10" />,
-  },
-  {
-    title: "NodeJS",
-    icon: <FaNodeJs className="w-10 h-10" />,
-  },
-  {
-    title: "Python",
-    icon: <FaPython className="w-10 h-10" />,
-  },
-  {
-    title: "NestJS",
-    icon: <SiNestjs className="w-10 h-10" />,
-  },
-  {
-    title: "Next",
-    icon: <TbBrandNextjs className="w-10 h-10" />,
-  },
-  {
-    title: "Tailwind",
-    icon: <SiTailwindcss className="w-10 h-10" />,
-  },
-  {
-    title: "Vite",
-    icon: <SiVite className="w-10 h-10" />,
-  },
-  {
-    title: "Sass",
-    icon: <FaSass className="w-10 h-10" />,
-  },
-  {
-    title: "Mysql",
-    icon: <GrMysql className="w-10 h-10" />,
-  },
-  {
-    title: "MongoDB",
-    icon: <SiMongodb className="w-10 h-10" />,
-  },
-];
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { projects } from "./utils/projects";
+import { companies } from "./utils/companies";
+import { format } from "date-fns";
+import { useHomePage } from "./hooks/useHomePage";
+import { socials } from "./utils/social";
+import { stacks } from "./utils/stacks";
+import { Map } from "./components/Map";
+import Image from "next/image";
 
 export default function Home() {
+  const { handleTheme } = useHomePage();
+
   return (
-    <main className="flex min-h-screen flex-col justify-start gap-10 mt-10">
-      <div className="w-full flex flex-col gap-4">
-        <div className="flex gap-2">
-          <img src="" alt="" />
-          <div className="flex flex-col gap-2">
-            <h3 className="text-3xl font-bold">Leonardo Reis</h3>
-            <p className="text-zinc-500">Desenvolvedor Typescript Fullstack</p>
+    <main className="flex justify-start gap-20 max-lg:flex-col overflow-scroll h-screen">
+      <div className="w-full flex flex-col gap-8 p-4 h-full">
+        <div className="flex flex-col gap-4">
+          <div className="w-[150px] h-[150px] bg-red-500 rounded-md"></div>
+          <div className="flex gap-4">
+            <Badge className="cursor-pointer" onClick={handleTheme}>
+              Toggle Theme
+            </Badge>
+            <Badge className="cursor-pointer">Blog</Badge>
+          </div>
+          <div>
+            <h3 className="text-3xl font-medium text-foreground">
+              Leonardo Reis
+            </h3>
+            <p className="text-muted-foreground text-sm">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+              quidem cupiditate illo optio minus et corrupti itaque cumque, rem
+              aliquid odit, aut eaque explicabo, nulla possimus suscipit vel
+              enim iste.
+            </p>
           </div>
         </div>
-        <div className="flex flex-wrap gap-4 max-md:justify-center">
-          <Link
-            href="https://www.linkedin.com/in/leonardoreiss/"
-            target="_blank"
-            className="hover:bg-zinc-800/50 flex  max-w-[150px] flex-[1_1_150px] gap-2 items-center py-2 justify-center rounded-md hover:text-indigo-500 transition-all duration-200"
-          >
-            <FaLinkedin className="w-5 h-5" />
-            <p>Linkedin</p>
-          </Link>
-          <Link
-            href="https://github.com/leonardoReizz"
-            target="_blank"
-            className="hover:bg-zinc-800/50 flex  max-w-[150px] flex-[1_1_150px] gap-2 items-center py-2 justify-center rounded-md hover:text-indigo-500 transition-all duration-200"
-          >
-            <FaGithub className="w-5 h-5" />
-            <p>Github</p>
-          </Link>
-          <Link
-            target="_blank"
-            href="https://twitter.com/leonardooreizz"
-            className="hover:bg-zinc-800/50 flex  max-w-[150px] flex-[1_1_150px] gap-2 items-center py-2 justify-center rounded-md hover:text-indigo-500 transition-all duration-200"
-          >
-            <FaTwitter className="w-5 h-5" />
-            <p>Twitter</p>
-          </Link>
-          <Link
-            target="_blank"
-            href="https://twitter.com/leonardooreizz"
-            className="hover:bg-zinc-800/50 flex  max-w-[150px] flex-[1_1_150px] gap-2 items-center py-2 justify-center rounded-md hover:text-indigo-500 transition-all duration-200"
-          >
-            <MdEmail className="w-5 h-5" />
-            <p>Email</p>
-          </Link>
+        <Separator />
+        <div className="flex flex-col gap-4 overflow-scroll h-[calc(100vh-200px)] max-lg:overflow-none max-lg:h-full">
+          <div className="flex items-center gap-2">
+            <FcBusiness className="w-6 h-6" />
+            <h5 className="text-lg font-medium text-foreground">
+              Qualificacoes
+            </h5>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            {companies.map((company) => {
+              return (
+                <Card key={company.id}>
+                  <CardHeader>
+                    <CardTitle className="flex justify-between">
+                      <Link
+                        className="hover:underline"
+                        href={company.link}
+                        target="_blank"
+                      >
+                        {company.title}
+                      </Link>
+                      <span className="text-sm text-zinc-400 font-normal">
+                        {format(company.startedAt, "dd/MM/yyyy")} -{" "}
+                        {company.endedAt ? String(company.endedAt) : "Atual"}
+                      </span>
+                    </CardTitle>
+                    <CardDescription>
+                      {company.simpleDescription}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-sm text-muted-foreground">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Similique tempora pariatur esse dolorem corporis. Cum
+                    consequuntur ipsum mollitia nam, eveniet cumque sapiente!
+                    Quos, aspernatur? Qui, voluptatum? Sint quo vel ipsum!
+                  </CardContent>
+                  <CardFooter className="flex flex-wrap gap-2">
+                    {company.tags.map((tag) => {
+                      return <Badge id={tag}>{tag}</Badge>;
+                    })}
+                  </CardFooter>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+        <Separator />
+        <div className="flex flex-col gap-4 overflow-scroll h-[calc(100vh-200px)] max-lg:overflow-none max-lg:h-full">
+          <div className="flex items-center gap-2">
+            <FcBusiness className="w-6 h-6" />
+            <h5 className="text-lg font-medium text-foreground">Carreira</h5>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            {companies.map((company) => {
+              return (
+                <Card key={company.id}>
+                  <CardHeader>
+                    <CardTitle className="flex justify-between">
+                      <Link
+                        className="hover:underline"
+                        href={company.link}
+                        target="_blank"
+                      >
+                        {company.title}
+                      </Link>
+                      <span className="text-sm text-zinc-400 font-normal">
+                        {format(company.startedAt, "dd/MM/yyyy")} -{" "}
+                        {company.endedAt ? String(company.endedAt) : "Atual"}
+                      </span>
+                    </CardTitle>
+                    <CardDescription>
+                      {company.simpleDescription}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-sm text-muted-foreground">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Similique tempora pariatur esse dolorem corporis. Cum
+                    consequuntur ipsum mollitia nam, eveniet cumque sapiente!
+                    Quos, aspernatur? Qui, voluptatum? Sint quo vel ipsum!
+                  </CardContent>
+                  <CardFooter className="flex flex-wrap gap-2">
+                    {company.tags.map((tag) => {
+                      return <Badge id={tag}>{tag}</Badge>;
+                    })}
+                  </CardFooter>
+                </Card>
+              );
+            })}
+          </div>
         </div>
       </div>
-      <div className="border p-4 rounded-md border-zinc-800 text-zinc-400">
-        <h5 className="text-indigo-500 font-bold text-lg">Sobre Mim</h5>
-        <p className="mt-4">
-          Sou um entusiasta da tecnologia, mergulhado no universo do
-          desenvolvimento. Com especialização em Typescript , minha jornada
-          acadêmica em Sistemas de Informação é apenas o início da minha busca
-          por conhecimento. Com mais de dois anos de experiência, destaco-me na
-          criação de APIs, microserviços e interfaces front-end. Meu domínio em
-          tecnologias como Node.js, React, MongoDB e MySQL é evidente, e meu
-          foco atual é aprimorar minhas habilidades e conceitos, para continuar
-          sempre evoluindo e contruindo projetos sustentaveis. Meus projetos no
-          GitHub são a expressão do meu compromisso com o aprendizado constante
-          e meu entusiasmo por colaborações no cenário do desenvolvimento de
-          software.
-        </p>
-      </div>
+      <div className="w-full flex flex-col gap-8 p-4 lg:h-screen h-full lg:overflow-scroll overflow-none">
+        <div className="flex gap-4 items-center xl:flex-row flex-col">
+          <Card className="start-center relative row-span-2 flex h-[350px] max-w-[400px] flex-col gap-5 overflow-hidden p-0 ">
+            <div className="absolute bottom-44 left-40">
+              <div className="center relative inset-x-0 z-10 flex">
+                <div className="absolute   h-4  w-4 rounded-full bg-blue-500 ring-4 ring-white" />
+                <div className="animate-ping-static  inset-0  h-6 w-6 rounded-full bg-blue-500" />
+              </div>
+            </div>
 
-      <div className="flex gap-8 border-zinc-800 text-zinc-400 max-md:flex-col">
-        <div className="rounded-md w-full flex flex-col gap-4 ">
-          <div className="flex justify-between align-center">
-            <h5 className=" font-semibold text-zinc-200 text-lg group-hover:text-indigo-500 transition-all">
-              Projetos
-            </h5>
+            <div className="animated-cloud absolute inset-0 z-30">
+              <div className="relative">
+                <Image
+                  width={480}
+                  height={480}
+                  className="absolute z-20 opacity-75"
+                  src="/cloud.png"
+                  alt=""
+                />
+                <Image
+                  width={480}
+                  height={480}
+                  className="absolute z-10 -translate-x-16 translate-y-28  opacity-15 blur-sm brightness-0"
+                  src="/cloud.png"
+                  alt=""
+                />
+              </div>
+            </div>
+
+            <Image
+              width={40}
+              height={40}
+              className="animated-plane absolute inset-0 z-10 object-contain"
+              src="/plane.png"
+              alt=""
+            />
+
+            <Map />
+          </Card>
+
+          <div className="flex flex-wrap gap-4 min-h-[300px] w-full justify-center">
+            {socials.map((social) => {
+              return (
+                <Card
+                  key={social.id}
+                  className="flex-[1_1_150px] max-w-[150px] h-[150px] min-w-[150px] items-center flex justify-center dark:hover:bg-zinc-900 hover:bg-zinc-200 transition-all cursor-pointer"
+                >
+                  <Link href={social.link} target="_blank">
+                    <CardContent className="flex flex-col items-center justify-center !p-1 gap-2">
+                      <Card className="p-3 w-fit dark:bg-zinc-950">
+                        {social.icon}
+                      </Card>
+                      <span className="text-center text-sm text-zinc-400">
+                        {social.title}
+                      </span>
+                    </CardContent>
+                  </Link>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+        <Separator />
+        <div className="flex flex-col gap-4">
+          <div className="flex justify-between items-center">
+            <h5 className="font-medium font-lg text-foreground">Projects</h5>
             <Link
-              href="/projects"
-              className="text-sm hover:text-indigo-500 hover:underline leading-7"
+              href=""
+              className="text-sm text-muted-foreground hover:underline"
             >
               Ver Mais
             </Link>
           </div>
-          {projects.map((project) => {
-            return (
-              <Link
-                href={project.link}
-                key={project.title}
-                target="_blank"
-                className="flex flex-col bg-zinc-800/25 p-4 cursor-pointer rounded-md border border-zinc-800 group hover:bg-zinc-800/50 transition-all "
-              >
-                <h5 className=" font-semibold text-zinc-200 text-lg group-hover:text-indigo-500 transition-all">
-                  {project.title}
-                </h5>
-                <p className="text-sm">{project.description}</p>
-              </Link>
-            );
-          })}
-        </div>
-        <div className="rounded-md w-full flex flex-col gap-4">
-          <h5 className=" w-full font-semibold text-zinc-200 text-lg group-hover:text-indigo-500 transition-all">
-            Principais Stacks
-          </h5>
-          <div className="flex flex-wrap gap-4">
-            {stacks.map((stack) => {
+          <div className="flex flex-wrap gap-4 justify-center">
+            {projects.map((project) => {
               return (
-                <div
-                  key={stack.title}
-                  className="flex-[1_1_200px] gap-2  transition-all  hover:bg-zinc-800/50 hover:text-indigo-500 items-center justify-center flex h-[90px] flex-col bg-zinc-800/25 p-4 rounded-md border border-zinc-800"
+                <Card
+                  className="flex-[1_1_340px] max-w-[500px]"
+                  key={project.title}
                 >
-                  <h5>{stack.title}</h5>
-                  {stack.icon}
-                </div>
+                  <CardHeader>
+                    <CardTitle className="flex justify-between">
+                      <span>{project.title}</span>
+                      <Link
+                        href={`/projects/${project.id}`}
+                        className="hover:underline text-sm text-zinc-400"
+                      >
+                        Ver Mais
+                      </Link>
+                    </CardTitle>
+                    <CardDescription>
+                      {project.simpleDescription}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-sm text-zinc-400">
+                    {project.title}
+                    {project.image && (
+                      <img className="rounded-md" src={project.image} alt="" />
+                    )}
+                  </CardContent>
+                </Card>
               );
             })}
           </div>
+        </div>
+        <Separator />
+        <div className="flex flex-col gap-4">
+          <h5 className="font-medium font-lg text-foreground">Minhas Stacks</h5>
+          <div className="flex flex-wrap gap-4 justify-center">
+            {stacks.map((stack) => {
+              return (
+                <Card
+                  className="flex-[1_1_160px] mt-10 h-[110px] max-w-[160px]"
+                  key={stack.title}
+                >
+                  <CardContent className="text-sm text-zinc-400 ">
+                    <Card className=" -mt-10 flex items-center justify-center hover:bg-zinc-800  transition-all">
+                      <CardContent className="flex items-center  justify-center  p-8">
+                        {stack.icon}
+                      </CardContent>
+                    </Card>
+                    <CardFooter>
+                      <span className="text-center w-full mt-2">
+                        {stack.title}
+                      </span>
+                    </CardFooter>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+
+        <Separator />
+        <div className="flex flex-col gap-4">
+          <div className="flex justify-between">
+            <h5 className="font-medium font-lg text-foreground">Eu</h5>
+            <Link
+              href=""
+              className="text-muted-foreground text-sm hover:underline"
+            >
+              Ver Mais
+            </Link>
+          </div>
+          <div className="flex flex-col lg:flex-row gap-4 items-center">
+            <Card className="w-fit">
+              <Image
+                alt=""
+                src="/judite2.jpg"
+                width={400}
+                height={400}
+                className="rounded-md w-none h-none xl:w-[250px] xl:h-[375px] object-cover "
+              />
+            </Card>
+            <div className="flex flex-col gap-4 justify-between h-full">
+              <Card className="w-fit">
+                <Image
+                  alt=""
+                  src="/judite1.jpg"
+                  width={525}
+                  height={525}
+                  className="rounded-md"
+                />
+              </Card>
+            </div>
+          </div>
+          <div className="flex flex-col gap-4 xl:flex-row w-full">
+            <Card className="w-full">
+              <iframe
+                className="bg-secondary h-[152px] w-full brightness-90 saturate-0 rounded-lg"
+                src="https://open.spotify.com/embed/track/73GKs8oNFFmtomWj7EsSU0?si=fcb2872cdeb44ca0?utm_source=generator&theme=0"
+                allowFullScreen
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+              ></iframe>
+            </Card>
+            <Card className="w-full">
+              <iframe
+                className="bg-secondary h-[152px] w-full brightness-90 saturate-0 rounded-lg"
+                src="https://open.spotify.com/embed/track/7tvEgQTYHph6n8rIoV74gq?si=c94ed39db85340c0?utm_source=generator&theme=0"
+                allowFullScreen
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+              ></iframe>
+            </Card>
+          </div>
+        </div>
+        <Separator />
+        <div className="flex flex-col gap-4">
+          <div className="flex justify-between">
+            <h5 className="font-medium font-lg text-foreground">Blog</h5>
+            <Link
+              href=""
+              className="text-muted-foreground text-sm hover:underline"
+            >
+              Ver Mais
+            </Link>
+          </div>
+          <div className="flex flex-wrap gap-4"></div>
         </div>
       </div>
     </main>
