@@ -5,15 +5,15 @@ import { PiProjectorScreenFill } from "react-icons/pi";
 import { SiNpm } from "react-icons/si";
 
 const projects = [
-  {
-    title: "Imagine UI",
-    image: "imagineui.png",
-    description:
-      "Explore a biblioteca exclusiva de componentes React Imagine UI, criada meticulosamente com Tailwind CSS para potencializar seu desenvolvimento.",
-    githubLink: "https://github.com/leonardoReizz/imagine-ui",
-    projectLink: "http://imagine-ui.com/",
-    npmLink: "https://www.npmjs.com/package/@imagine-ui/react",
-  },
+  // {
+  //   title: "Imagine UI",
+  //   image: "imagineui.png",
+  //   description:
+  //     "Explore a biblioteca exclusiva de componentes React Imagine UI, criada meticulosamente com Tailwind CSS para potencializar seu desenvolvimento.",
+  //   githubLink: "https://github.com/leonardoReizz/imagine-ui",
+  //   projectLink: "http://imagine-ui.com/",
+  //   npmLink: "https://www.npmjs.com/package/@imagine-ui/react",
+  // },
   {
     title: "Associacao Aconchego",
     image: "aconchego.png",
@@ -70,7 +70,7 @@ export default function Projects() {
                   src={project.image}
                 />
               )}
-              <div>
+              <div className="flex flex-col justifu-between h-full">
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
               </div>

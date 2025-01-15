@@ -14,11 +14,11 @@ import { GrMysql } from "react-icons/gr";
 import Link from "next/link";
 
 const projects = [
-  {
-    title: "Imagine UI",
-    description: "Biblioteca de componentes para React",
-    link: "https://imagine-ui.com/",
-  },
+  // {
+  //   title: "Imagine UI",
+  //   description: "Biblioteca de componentes para React",
+  //   link: "https://imagine-ui.com/",
+  // },
   {
     title: "Associacao Aconchego",
     description: "Landing page para associacao aconchego",
@@ -33,7 +33,7 @@ const projects = [
   {
     title: "Gita",
     description: "Sistema de observabilidade para ambientes Kubernetes",
-    link: "https://site.gita.jackexperts.com.br/",
+    link: "https://gita.cloud/",
   },
   {
     title: "Eslint-config",
@@ -121,14 +121,14 @@ export default function Home() {
             <FaTwitter className="w-5 h-5" />
             <p>Twitter</p>
           </Link>
-          <Link
-            target="_blank"
-            href="https://twitter.com/leonardooreizz"
-            className="hover:bg-zinc-800/50 flex  max-w-[150px] flex-[1_1_150px] gap-2 items-center py-2 justify-center rounded-md hover:text-indigo-500 transition-all duration-200"
+          <div
+            // target="_blank"
+            // href="https://twitter.com/leonardooreizz"
+            className="hover:bg-zinc-800/50 flex  max-w-[260px] flex-[1_1_150px] gap-2 items-center py-2 justify-center rounded-md hover:text-indigo-500 transition-all duration-200"
           >
             <MdEmail className="w-5 h-5" />
-            <p>Email</p>
-          </Link>
+            <p>amarantee.reis@gmail.com</p>
+          </div>
         </div>
       </div>
       <div className="border p-4 rounded-md border-zinc-800 text-zinc-400">
