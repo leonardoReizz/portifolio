@@ -8,7 +8,6 @@ import {
   SendIcon,
   GithubIcon,
   LinkedinIcon,
-  TwitterIcon,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
