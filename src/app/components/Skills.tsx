@@ -45,15 +45,7 @@ const skillsData: SkillCategory[] = [
     id: 3,
     title: "Banco de Dados",
     icon: <DatabaseIcon className="h-6 w-6" />,
-    skills: [
-      "PostgreSQL",
-      "MongoDB",
-      "MySQL",
-      "Redis",
-      "Prisma",
-      "PrismaORM",
-      "TypeORM",
-    ],
+    skills: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "PrismaORM", "TypeORM"],
   },
   {
     id: 4,
