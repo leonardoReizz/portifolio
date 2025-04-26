@@ -79,8 +79,8 @@ export default function Contact() {
     {
       icon: <PhoneIcon className="h-5 w-5" />,
       title: "Telefone",
-      value: "+55 (31) 99899-3522",
-      link: "tel:+5531998993522",
+      value: "+55 (31) 99899-5644",
+      link: "tel:+5531998995644",
     },
     {
       icon: <MapPinIcon className="h-5 w-5" />,
