@@ -16,21 +16,21 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
-    id: 1,
-    year: "2022 - Presente",
-    title: "Desenvolvedor Fullstack Pleno",
-    location: "Brasília, DF ( Remoto )",
+    id: 0,
+    year: "2025 - Presente ( Contrato )",
+    title: "Desenvolvedor Fullstack",
+    location: "São Paulo, SP ( Remoto )",
     description:
-      "Desenvolvimento de aplicações web e desktop utilizando React, Node.js e Docker. Implementação de CI/CD e práticas ágeis.",
+      "Desenvolvimento de aplicações fullstack web utilizando ReactJS, Next.js, Node.js, Elixir, PostgreSQL e Docker",
     type: "experience",
   },
   {
-    id: 2,
-    year: "2021 - Presente",
-    title: "Desenvolvedor Fullstack Freelancer",
-    location: "Ouro Preto, MG ( Remoto )",
+    id: 1,
+    year: "2022 - Presente ( CLT )",
+    title: "Desenvolvedor Fullstack Pleno",
+    location: "Brasília, DF ( Remoto )",
     description:
-      "Desenvolvimento de aplicações web completas utilizando tecnologias modernas como React, Next.js e Node.js. Experiência com diversas linguagens incluindo TypeScript, Python e Go. Proficiência em bancos de dados SQL e NoSQL, containerização com Docker, e frameworks CSS como TailwindCSS. Implementação de APIs RESTful com Express e NestJS, além de testes automatizados com Jest.",
+      "Desenvolvimento de aplicações web e desktop fulltstack utilizando ReactJS, Node.js e Docker. Implementação de CI/CD e práticas ágeis.",
     type: "experience",
   },
   {
