@@ -30,7 +30,7 @@ const timelineData: TimelineItem[] = [
     title: "Jack Experts - Desenvolvedor Fullstack Pleno",
     location: "Brasília, DF ( Remoto )",
     description:
-      "Desenvolvimento de aplicações web e desktop fulltstack utilizando ReactJS, Node.js e Docker. Implementação de CI/CD e práticas ágeis.",
+      "Desenvolvimento de aplicações web e desktop fullstack utilizando ReactJS, Node.js, GoLang e Docker. Implementação de CI/CD e práticas ágeis.",
     type: "experience",
   },
   {
