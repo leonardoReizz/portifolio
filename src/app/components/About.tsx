@@ -18,7 +18,7 @@ const timelineData: TimelineItem[] = [
   {
     id: 0,
     year: "2025 - Presente ( Contrato )",
-    title: "Desenvolvedor Fullstack",
+    title: "Fulltrader - Desenvolvedor Fullstack",
     location: "São Paulo, SP ( Remoto )",
     description:
       "Desenvolvimento de aplicações fullstack web utilizando ReactJS, Next.js, Node.js, Elixir, PostgreSQL e Docker",
@@ -27,7 +27,7 @@ const timelineData: TimelineItem[] = [
   {
     id: 1,
     year: "2022 - Presente ( CLT )",
-    title: "Desenvolvedor Fullstack Pleno",
+    title: "Jack Experts - Desenvolvedor Fullstack Pleno",
     location: "Brasília, DF ( Remoto )",
     description:
       "Desenvolvimento de aplicações web e desktop fulltstack utilizando ReactJS, Node.js e Docker. Implementação de CI/CD e práticas ágeis.",
