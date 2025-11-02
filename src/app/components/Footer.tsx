@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center gap-1 text-sm text-muted-foreground">
-            <span>© {currentYear} Leonardo Reis.</span>
+            <span>© 2025 - {currentYear} Leonardo Reis.</span>
           </div>
         </div>
       </div>

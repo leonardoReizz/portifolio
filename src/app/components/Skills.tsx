@@ -30,7 +30,6 @@ const skillsData: SkillCategory[] = [
       "HTML5/CSS3",
       "JavaScript/TypeScript",
       "React.js",
-      "Vue.js",
       "Next.js",
       "Tailwind CSS",
     ],
@@ -67,6 +66,7 @@ const skillsData: SkillCategory[] = [
       "Docker",
       "CI/CD",
       "AWS",
+      "OCI",
       "Vercel",
       "GitHub Actions",
       "Kubernetes",
@@ -151,7 +151,7 @@ export default function Skills() {
           {skillsData.map((category, index) => (
             <div
               key={category.id}
-              ref={(el) => (skillRefs.current[index] = el)}
+              // ref={(el) => (skillRefs.current[index] = el)}
               data-id={category.id}
               className={cn(
                 "bg-card rounded-xl p-6 border border-border/50 shadow-subtle hover:shadow-elevation transition-all duration-300 ease-apple",

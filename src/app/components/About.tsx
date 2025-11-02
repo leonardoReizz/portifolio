@@ -15,22 +15,31 @@ interface TimelineItem {
 }
 
 const timelineData: TimelineItem[] = [
+  // {
+  //   id: -1,
+  //   year: "10/2025 - Presente",
+  //   title: "Sysko - Co-Founder",
+  //   location: "São Paulo, SP ( Remoto )",
+  //   description:
+  //     "O Sysko é uma plataforma de deploy automatizado que permite que desenvolvedores publiquem seus aplicativos diretamente a partir do GitHub, de forma simples e rápida",
+  //   type: "experience",
+  // },
   {
     id: 0,
-    year: "2025 - Presente ( Contrato )",
+    year: "03/2025 - Presente ( Contrato )",
     title: "Fulltrader - Desenvolvedor Fullstack",
     location: "São Paulo, SP ( Remoto )",
     description:
-      "Desenvolvimento de aplicações fullstack web utilizando ReactJS, Next.js, Node.js, Elixir, PostgreSQL e Docker",
+      "Focado no desenvolvimento de novos negócios dentro da empresa, trabalhando na criação de soluções do zero — desde a ideia até a validação do MVP. Tenho atuado muito próximo das áreas de produto e tecnologia. Uso principalmente React, Node.js, WebSocket e PostgreSQL no dia a dia para dar vida a essas ideias.",
     type: "experience",
   },
   {
     id: 1,
-    year: "2022 - Presente ( CLT )",
+    year: "06/2022 - Presente ( CLT )",
     title: "Jack Experts - Desenvolvedor Fullstack Pleno",
     location: "Brasília, DF ( Remoto )",
     description:
-      "Desenvolvimento de aplicações web e desktop fullstack utilizando ReactJS, Node.js, GoLang e Docker. Implementação de CI/CD e práticas ágeis.",
+      "Atuação no desenvolvimento e manutenção de aplicações web modernas e escaláveis, utilizando Vite, React e NestJS. Responsável pela criação de APIs e microsserviços de alta performance em Node.js e NestJS, além do desenvolvimento de soluções em GoLang voltadas para gerenciamento e automação de recursos em clusters Kubernetes, com suporte a mais de 500 nodes ativos. Experiência em integrações de pagamento com Stripe, definição de arquiteturas distribuídas e mentoria técnica de estagiários, promovendo boas práticas de programação e qualidade de código.",
     type: "experience",
   },
   {
@@ -99,7 +108,7 @@ export default function About() {
             </p>
             <div className="grid grid-cols-2 gap-6 mb-8">
               <div>
-                <h4 className="text-2xl font-bold text-primary">3+</h4>
+                <h4 className="text-2xl font-bold text-primary">4+</h4>
                 <p className="text-muted-foreground">Anos de experiência</p>
               </div>
               <div>
@@ -111,7 +120,7 @@ export default function About() {
                 <p className="text-muted-foreground">Clientes satisfeitos</p>
               </div>
               <div>
-                <h4 className="text-2xl font-bold text-primary">15+</h4>
+                <h4 className="text-2xl font-bold text-primary">10+</h4>
                 <p className="text-muted-foreground">Tecnologias dominadas</p>
               </div>
             </div>
@@ -127,7 +136,9 @@ export default function About() {
               {timelineData.map((item, index) => (
                 <div
                   key={item.id}
-                  ref={(el) => (itemRefs.current[index] = el)}
+                  // ref={(el: HTMLDivElement | null) =>
+                  //   (itemRefs.current[index] = el)
+                  // }
                   data-id={item.id}
                   className={cn(
                     "relative pl-8 border-l-2 border-border pb-6 last:pb-0",

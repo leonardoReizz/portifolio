@@ -18,8 +18,36 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: 111,
+    title: "Sysko",
+    description: "Plataforma de deploy automatizado de aplicações",
+    image: "./sysko.png",
+    tags: [
+      "React",
+      "Vite",
+      "Next.js",
+      "Node.js",
+      "Python",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Kubernetes",
+      "Docker",
+      "GitLab",
+      "CI/CD",
+    ],
+    demoUrl: "https://sysko.io",
+  },
+  {
+    id: 11,
+    title: "TouchABA",
+    description: "Sistema para clinica que atuam com ABA",
+    image: "",
+    tags: ["React", "Node.js", "PostgreSQL", "Tailwind CSS", "Docker"],
+    demoUrl: "https://touchaba.com/",
+  },
+  {
     id: 1,
-    title: "Associacao Aconchego",
+    title: "Associação Aconchego",
     description: "Landing page para associacao aconchego",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtSgxTKerUly0tmfUuL45Am3dYN_zeB5cIfQ&s",
@@ -40,10 +68,9 @@ const projects: Project[] = [
   {
     id: 3,
     title: "Gita",
+    image: "https://gita.cloud/img/dalle.webp",
     description:
       "Sistema de gerenciamento e observabilidade para ambientes Kubernetes",
-    image:
-      "https://site.gita.jackexperts.com.br/_next/image?url=%2Fdalle.png&w=1080&q=75",
     tags: [
       "React.JS",
       "Next.JS",
@@ -116,7 +143,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              ref={(el) => (projectRefs.current[index] = el)}
+              // ref={(el) => (projectRefs.current[index] = el)}
               data-id={project.id}
               className={cn(
                 "bg-card rounded-2xl overflow-hidden hover-card-animation shadow-subtle border border-border/50",
