@@ -51,6 +51,14 @@ const timelineData: TimelineItem[] = [
       "Formação em desenvolvimento de software, algoritmos, estruturas de dados e engenharia de software.",
     type: "education",
   },
+  {
+    id: 4,
+    year: "2025 - 2027",
+    title: "Pós Graduação em Engenharia de Software ",
+    location: "Faculdade Descomplica Sul Americana",
+    description: "",
+    type: "education",
+  },
 ];
 
 export default function About() {
