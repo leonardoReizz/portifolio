@@ -18,6 +18,25 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: 113,
+    title: "Aegis Vault",
+    description: "Gerenciador de senhas multiplataforma para desktop",
+    image: "./aegis.png",
+    tags: [
+      "React",
+      "Vite",
+      "Rust",
+      "Tauri",
+      "Criptografia",
+      "MongoDB",
+      "Tailwind CSS",
+      "CI/CD",
+      "Github Actions",
+    ],
+    demoUrl: "https://aegisvault.leonardo-reis.com",
+    repoUrl: "https://github.com/leonardoReizz/aegis-vault",
+  },
+  {
     id: 112,
     title: "SentraAPI",
     description: "Plataforma de monitoramento para apis",
