@@ -2,8 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { AwardIcon, GraduationCapIcon, BriefcaseIcon } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { GraduationCapIcon, BriefcaseIcon } from "lucide-react";
 
 interface TimelineItem {
   id: number;
@@ -15,169 +14,242 @@ interface TimelineItem {
 }
 
 const timelineData: TimelineItem[] = [
-  // {
-  //   id: -1,
-  //   year: "10/2025 - Presente",
-  //   title: "Sysko - Co-Founder",
-  //   location: "São Paulo, SP ( Remoto )",
-  //   description:
-  //     "O Sysko é uma plataforma de deploy automatizado que permite que desenvolvedores publiquem seus aplicativos diretamente a partir do GitHub, de forma simples e rápida",
-  //   type: "experience",
-  // },
   {
     id: 0,
-    year: "03/2025 - Presente ( Contrato )",
+    year: "03/2025 - Presente",
     title: "Fulltrader - Desenvolvedor Fullstack",
-    location: "São Paulo, SP ( Remoto )",
+    location: "Sao Paulo, SP ( Remoto )",
     description:
-      "Focado no desenvolvimento de novos negócios dentro da empresa, trabalhando na criação de soluções do zero — desde a ideia até a validação do MVP. Tenho atuado muito próximo das áreas de produto e tecnologia. Uso principalmente React, Node.js, WebSocket e PostgreSQL no dia a dia para dar vida a essas ideias.",
+      "Focado no desenvolvimento de novos negocios dentro da empresa, trabalhando na criacao de solucoes do zero. Uso React, Node.js, WebSocket e PostgreSQL.",
     type: "experience",
   },
   {
     id: 1,
-    year: "06/2022 - Presente ( CLT )",
-    title: "Jack Experts - Desenvolvedor Fullstack Pleno",
-    location: "Brasília, DF ( Remoto )",
+    year: "06/2022 - Presente",
+    title: "Jack Experts - Fullstack Pleno",
+    location: "Brasilia, DF ( Remoto )",
     description:
-      "Atuação no desenvolvimento e manutenção de aplicações web modernas e escaláveis, utilizando Vite, React e NestJS. Responsável pela criação de APIs e microsserviços de alta performance em Node.js e NestJS, além do desenvolvimento de soluções em GoLang voltadas para gerenciamento e automação de recursos em clusters Kubernetes, com suporte a mais de 500 nodes ativos. Experiência em integrações de pagamento com Stripe, definição de arquiteturas distribuídas e mentoria técnica de estagiários, promovendo boas práticas de programação e qualidade de código.",
+      "Desenvolvimento de aplicacoes web com Vite, React e NestJS. APIs e microsservicos de alta performance. Solucoes em GoLang para automacao de clusters Kubernetes com 500+ nodes. Integracoes Stripe e mentoria tecnica.",
     type: "experience",
   },
   {
     id: 3,
     year: "2020 - 2025",
-    title: "Bacharelado em Sistemas de Informação",
+    title: "Bacharelado em Sistemas de Informacao",
     location: "Faculdade Descomplica Sul Americana",
     description:
-      "Formação em desenvolvimento de software, algoritmos, estruturas de dados e engenharia de software.",
+      "Formacao em desenvolvimento de software, algoritmos, estruturas de dados e engenharia de software.",
     type: "education",
   },
   {
     id: 4,
     year: "2025 - 2027",
-    title: "Pós Graduação em Engenharia de Software ",
+    title: "Pos Graduacao em Engenharia de Software",
     location: "Faculdade Descomplica Sul Americana",
     description: "",
     type: "education",
   },
 ];
 
-export default function About() {
-  const [visibleItems, setVisibleItems] = useState<number[]>([]);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+const stats = [
+  { value: "4+", label: "Anos de\nexperiencia" },
+  { value: "10+", label: "Projetos\nconcluidos" },
+  { value: "5+", label: "Clientes\nsatisfeitos" },
+  { value: "10+", label: "Tecnologias\ndominadas" },
+];
+
+function AnimatedCounter({
+  value,
+  visible,
+}: {
+  value: string;
+  visible: boolean;
+}) {
+  const num = parseInt(value);
+  const suffix = value.replace(String(num), "");
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
+    if (!visible) return;
+    let start = 0;
+    const duration = 2000;
+    const startTime = Date.now();
+
+    const tick = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      start = Math.floor(eased * num);
+      setCount(start);
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
+  }, [visible, num]);
+
+  return (
+    <span>
+      {count}
+      {suffix}
+    </span>
+  );
+}
+
+export default function About() {
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const fallback = setTimeout(() => setVisible(true), 800);
+
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = Number(entry.target.getAttribute("data-id"));
-            setVisibleItems((prev) => [...prev, id]);
-          }
-        });
+        if (entries[0].isIntersecting) {
+          setVisible(true);
+          clearTimeout(fallback);
+        }
       },
-      { threshold: 0.2 },
+      { threshold: 0.02 },
     );
 
-    itemRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => {
-      itemRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
+      clearTimeout(fallback);
+      observer.disconnect();
     };
   }, []);
 
   return (
-    <section id="about" className="section-padding bg-secondary/30">
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <Badge variant="outline" className="mb-4">
-              Sobre Mim
-            </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Transformando ideias em{" "}
-              <span className="text-primary">realidade digital</span>
-            </h2>
-            <p className="text-lg text-muted-foreground mb-6">
-              Sou um desenvolvedor fullstack apaixonado por criar soluções
-              elegantes para problemas complexos. Comecei minha jornada na
-              programação há mais de 3 anos e desde então venho construindo
-              aplicações web e móveis que combinam excelência técnica com design
-              excepcional.
-            </p>
-            <p className="text-lg text-muted-foreground mb-6">
-              Minha abordagem se baseia na criação de código limpo, bem
-              documentado e escalável, com foco na experiência do usuário e nas
-              necessidades do negócio. Estou sempre aprendendo novas tecnologias
-              e metodologias para entregar soluções cada vez melhores.
-            </p>
-            <div className="grid grid-cols-2 gap-6 mb-8">
-              <div>
-                <h4 className="text-2xl font-bold text-primary">4+</h4>
-                <p className="text-muted-foreground">Anos de experiência</p>
+    <section
+      ref={sectionRef}
+      id="about"
+      className="section-padding relative flex items-center justify-center"
+    >
+      <div className="container max-w-7xl">
+        {/* Section header */}
+        <div className="flex flex-col items-center text-center mb-20">
+          <span className="text-xs font-medium tracking-[0.3em] uppercase text-primary mb-4">
+            Sobre
+          </span>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+            Transformando ideias em{" "}
+            <span className="text-gradient">realidade</span>
+          </h2>
+          <p className="text-muted-foreground max-w-2xl text-base leading-relaxed">
+            Desenvolvedor fullstack apaixonado por criar solucoes elegantes.
+            Mais de 3 anos construindo aplicacoes web e moveis que combinam
+            excelencia tecnica com design excepcional. Codigo limpo, escalavel e
+            focado na experiencia do usuario.
+          </p>
+        </div>
+
+        {/* Stats row */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-24   ">
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className={cn(
+                "spotlight-card p-6 text-center group stagger-item",
+                visible && "stagger-item-visible",
+              )}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
+              <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">
+                <AnimatedCounter value={stat.value} visible={visible} />
               </div>
-              <div>
-                <h4 className="text-2xl font-bold text-primary">10+</h4>
-                <p className="text-muted-foreground">Projetos concluídos</p>
-              </div>
-              <div>
-                <h4 className="text-2xl font-bold text-primary">5+</h4>
-                <p className="text-muted-foreground">Clientes satisfeitos</p>
-              </div>
-              <div>
-                <h4 className="text-2xl font-bold text-primary">10+</h4>
-                <p className="text-muted-foreground">Tecnologias dominadas</p>
-              </div>
+              <p className="text-xs text-muted-foreground whitespace-pre-line leading-relaxed uppercase tracking-wider">
+                {stat.label}
+              </p>
             </div>
-          </div>
+          ))}
+        </div>
 
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <AwardIcon className="text-primary" />
-              Formação e Experiência
-            </h3>
+        {/* Timeline */}
+        <div className="max-w-2xl mx-auto">
+          <h3 className="text-center text-2xl font-bold mb-12">
+            Formacao & <span className="text-gradient">Experiencia</span>
+          </h3>
 
-            <div className="space-y-6">
-              {timelineData.map((item, index) => (
+          <div className="relative pl-10">
+            {/* Vertical line - dark base */}
+            <div
+              className="absolute left-[7px] top-2 w-[2px] z-0"
+              style={{
+                bottom: "2rem",
+                background: "hsl(225 15% 15%)",
+              }}
+            />
+            {/* Beam of light */}
+            <div
+              className="absolute left-[7px] top-2 w-[2px] z-[1] overflow-hidden"
+              style={{ bottom: "2rem" }}
+            >
+              <div
+                className="absolute left-0 w-full"
+                style={{
+                  height: "60px",
+                  background:
+                    "linear-gradient(to bottom, transparent, hsl(217 91% 60%), transparent)",
+                  animation: "beam-travel 3s ease-in-out infinite",
+                }}
+              />
+            </div>
+
+            {timelineData.map((item, index) => (
+              <div
+                key={item.id}
+                className={cn(
+                  "relative pb-10 last:pb-0 stagger-item",
+                  visible && "stagger-item-visible",
+                )}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
+                {/* Dot */}
                 <div
-                  key={item.id}
-                  // ref={(el: HTMLDivElement | null) =>
-                  //   (itemRefs.current[index] = el)
-                  // }
-                  data-id={item.id}
                   className={cn(
-                    "relative pl-8 border-l-2 border-border pb-6 last:pb-0",
-                    item.type === "education"
-                      ? "border-primary/40"
-                      : "border-primary",
-                    visibleItems.includes(item.id)
-                      ? "stagger-item-visible"
-                      : "stagger-item",
+                    "absolute -left-10 top-5 w-4 h-4 rounded-full border-2 z-10",
+                    item.type === "experience"
+                      ? "border-primary bg-primary shadow-[0_0_12px_hsl(217_91%_60%/0.5)]"
+                      : "border-primary/40 bg-background",
                   )}
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                >
-                  <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-background border-2 border-primary" />
+                />
 
-                  <div className="flex items-center gap-2 mb-2">
-                    {item.type === "education" ? (
-                      <GraduationCapIcon size={18} className="text-primary" />
-                    ) : (
-                      <BriefcaseIcon size={18} className="text-primary" />
-                    )}
-                    <span className="text-sm font-medium text-primary">
+                {/* Card */}
+                <div className="spotlight-card p-5 group">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div
+                      className={cn(
+                        "w-7 h-7 rounded-lg flex items-center justify-center",
+                        item.type === "experience"
+                          ? "bg-primary/10 text-primary"
+                          : "bg-violet-500/10 text-violet-400",
+                      )}
+                    >
+                      {item.type === "education" ? (
+                        <GraduationCapIcon size={14} />
+                      ) : (
+                        <BriefcaseIcon size={14} />
+                      )}
+                    </div>
+                    <span className="text-[11px] font-mono font-medium text-primary/80">
                       {item.year}
                     </span>
                   </div>
 
-                  <h4 className="text-lg font-bold">{item.title}</h4>
-                  <p className="text-muted-foreground mb-2">{item.location}</p>
-                  <p className="text-sm">{item.description}</p>
+                  <h4 className="text-base font-bold mb-1 group-hover:text-gradient transition-all duration-300">
+                    {item.title}
+                  </h4>
+                  <p className="text-xs text-muted-foreground/60 mb-2">
+                    {item.location}
+                  </p>
+                  {item.description && (
+                    <p className="text-sm text-muted-foreground/80 leading-relaxed">
+                      {item.description}
+                    </p>
+                  )}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

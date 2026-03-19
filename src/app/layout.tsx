@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Leonardo Reis - Desenvolvedor Fullstack",
@@ -16,16 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className}`}>
-        {/* <div className="w-full h-full">
-          <Sidebar />
-          <div className="w-full h-full flex items-start justify-center  mt-[70px]">
-            <div className="w-full h-full max-w-5xl p-4 ">{children}</div>
-          </div>
-        </div> */}
-        {children}
-        <Toaster />
+    <html lang="pt-BR" className="dark">
+      <body className={`${inter.variable} font-sans flex justify-center`}>
+        <div className="max-w-7xl">{children}</div>
+        <Toaster theme="dark" />
       </body>
     </html>
   );

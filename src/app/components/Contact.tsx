@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import {
@@ -8,16 +9,16 @@ import {
   SendIcon,
   GithubIcon,
   LinkedinIcon,
+  ArrowUpRightIcon,
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
 export default function Contact() {
-  const [formVisible, setFormVisible] = useState(false);
-  const formRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -35,155 +36,147 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Simulate form submission
     toast.success("Mensagem enviada!");
-
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   useEffect(() => {
+    const fallback = setTimeout(() => setVisible(true), 800);
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          setFormVisible(true);
+          setVisible(true);
+          clearTimeout(fallback);
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.02 },
     );
 
-    if (formRef.current) {
-      observer.observe(formRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => {
-      if (formRef.current) {
-        observer.unobserve(formRef.current);
-      }
+      clearTimeout(fallback);
+      observer.disconnect();
     };
   }, []);
 
-  const contactInfo = [
+  const contactLinks = [
     {
       icon: <MailIcon className="h-5 w-5" />,
-      title: "Email",
+      label: "Email",
       value: "amarantee.reis@gmail.com",
-      link: "mailto:amarantee.reis@gmail.com",
+      href: "mailto:amarantee.reis@gmail.com",
     },
     {
       icon: <PhoneIcon className="h-5 w-5" />,
-      title: "Telefone",
-      value: "+55 (31) 99899-5644",
-      link: "tel:+5531998995644",
+      label: "Telefone",
+      value: "+55 (47) 992558338",
+      href: "tel:+553147992558338",
     },
     {
       icon: <MapPinIcon className="h-5 w-5" />,
-      title: "Localização",
+      label: "Localizacao",
       value: "Minas Gerais, Brasil",
-      link: null,
+      href: null,
     },
-  ];
-
-  const socialLinks = [
     {
-      icon: <LinkedinIcon />,
-      url: "https://www.linkedin.com/in/leonardoreiss/",
+      icon: <LinkedinIcon className="h-5 w-5" />,
       label: "LinkedIn",
+      value: "leonardoreiss",
+      href: "https://www.linkedin.com/in/leonardoreiss/",
     },
     {
-      icon: <GithubIcon />,
-      url: "https://github.com/leonardoReizz",
+      icon: <GithubIcon className="h-5 w-5" />,
       label: "GitHub",
+      value: "leonardoReizz",
+      href: "https://github.com/leonardoReizz",
     },
   ];
 
   return (
-    <section id="contact" className="section-padding">
+    <section ref={sectionRef} id="contact" className="section-padding relative">
       <div className="container">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <Badge variant="outline" className="mb-4">
+        {/* Section header */}
+        <div className="flex flex-col items-center text-center mb-20">
+          <span className="text-xs font-medium tracking-[0.3em] uppercase text-primary mb-4">
             Contato
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Vamos <span className="text-primary">Conversar</span>
+          </span>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+            Vamos <span className="text-gradient">Conversar</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Estou aberto a oportunidades de trabalho e colaborações. Entre em
-            contato comigo pelos canais abaixo ou preencha o formulário.
+          <p className="text-muted-foreground max-w-lg text-base">
+            Estou aberto a oportunidades de trabalho e colaboracoes.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div>
-            <div className="space-y-8 mb-8">
-              {contactInfo.map((item, index) => (
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-5 gap-6">
+          {/* Contact links - left side */}
+          <div className="lg:col-span-2 space-y-3">
+            {contactLinks.map((item, index) => {
+              const content = (
                 <div
-                  key={index}
-                  className="flex items-center gap-4 animate-fade-in"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className={cn(
+                    "spotlight-card p-4 flex items-center gap-4 group stagger-item",
+                    visible && "stagger-item-visible",
+                  )}
+                  style={{ transitionDelay: `${index * 80}ms` }}
                 >
-                  <div className="bg-primary/10 p-3 rounded-full text-primary">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary/70 group-hover:text-primary group-hover:scale-110 transition-all duration-300 shrink-0">
                     {item.icon}
                   </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">
-                      {item.title}
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground/50 mb-0.5">
+                      {item.label}
                     </p>
-                    {item.link ? (
-                      <a
-                        href={item.link}
-                        className="font-medium hover:text-primary transition-colors"
-                      >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className="font-medium">{item.value}</p>
-                    )}
+                    <p className="text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors truncate">
+                      {item.value}
+                    </p>
                   </div>
+                  {item.href && (
+                    <ArrowUpRightIcon
+                      size={14}
+                      className="text-muted-foreground/20 group-hover:text-primary transition-all duration-300 shrink-0"
+                    />
+                  )}
                 </div>
-              ))}
-            </div>
+              );
 
-            <div>
-              <h3 className="text-xl font-bold mb-4">Redes Sociais</h3>
-              <div className="flex gap-4">
-                {socialLinks.map((social, index) => (
+              if (item.href) {
+                return (
                   <a
                     key={index}
-                    href={social.url}
-                    target="_blank"
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel="noreferrer"
-                    className="bg-card hover:bg-secondary p-3 rounded-full text-foreground/80 hover:text-primary transition-colors border border-border/50"
-                    aria-label={social.label}
+                    className="block"
                   >
-                    {social.icon}
+                    {content}
                   </a>
-                ))}
-              </div>
-            </div>
+                );
+              }
+              return <div key={index}>{content}</div>;
+            })}
           </div>
 
+          {/* Form - right side */}
           <div
-            ref={formRef}
             className={cn(
-              "bg-card p-8 rounded-2xl border border-border/50 shadow-subtle transition-all duration-700 ease-apple",
-              formVisible
+              "lg:col-span-3 spotlight-card p-6 md:p-8 transition-all duration-700",
+              visible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10",
             )}
+            style={{ transitionDelay: "0.3s" }}
           >
-            <h3 className="text-xl font-bold mb-6">Envie uma mensagem</h3>
+            <h3 className="text-lg font-bold mb-6">Envie uma mensagem</h3>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid md:grid-cols-2 gap-5">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="text-[10px] font-medium text-muted-foreground/60 uppercase tracking-widest mb-1.5 block"
+                  >
                     Nome
                   </label>
                   <Input
@@ -193,12 +186,15 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="bg-background/50"
+                    className="bg-white/[0.02] border-white/[0.06] focus:border-primary/40 rounded-xl h-11 text-sm placeholder:text-muted-foreground/30 transition-colors"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="text-[10px] font-medium text-muted-foreground/60 uppercase tracking-widest mb-1.5 block"
+                  >
                     Email
                   </label>
                   <Input
@@ -209,13 +205,16 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="bg-background/50"
+                    className="bg-white/[0.02] border-white/[0.06] focus:border-primary/40 rounded-xl h-11 text-sm placeholder:text-muted-foreground/30 transition-colors"
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium">
+              <div>
+                <label
+                  htmlFor="subject"
+                  className="text-[10px] font-medium text-muted-foreground/60 uppercase tracking-widest mb-1.5 block"
+                >
                   Assunto
                 </label>
                 <Input
@@ -225,29 +224,35 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="bg-background/50"
+                  className="bg-white/[0.02] border-white/[0.06] focus:border-primary/40 rounded-xl h-11 text-sm placeholder:text-muted-foreground/30 transition-colors"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium">
+              <div>
+                <label
+                  htmlFor="message"
+                  className="text-[10px] font-medium text-muted-foreground/60 uppercase tracking-widest mb-1.5 block"
+                >
                   Mensagem
                 </label>
                 <Textarea
                   id="message"
                   name="message"
                   placeholder="Sua mensagem..."
-                  rows={5}
+                  rows={4}
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="resize-none bg-background/50"
+                  className="resize-none bg-white/[0.02] border-white/[0.06] focus:border-primary/40 rounded-xl text-sm placeholder:text-muted-foreground/30 transition-colors"
                 />
               </div>
 
-              <Button type="submit" className="w-full gap-2">
+              <Button
+                type="submit"
+                className="w-full glow-button rounded-xl h-11 font-medium text-sm gap-2"
+              >
                 Enviar Mensagem
-                <SendIcon size={16} />
+                <SendIcon size={14} />
               </Button>
             </form>
           </div>

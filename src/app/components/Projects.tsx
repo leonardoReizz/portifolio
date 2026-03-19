@@ -2,9 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { ExternalLinkIcon, GithubIcon } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { ExternalLinkIcon, GithubIcon, ArrowUpRightIcon } from "lucide-react";
 
 interface Project {
   id: number;
@@ -14,6 +12,7 @@ interface Project {
   tags: string[];
   demoUrl?: string;
   repoUrl?: string;
+  featured?: boolean;
 }
 
 const projects: Project[] = [
@@ -24,69 +23,37 @@ const projects: Project[] = [
     image: "./aegis.png",
     tags: [
       "React",
-      "Vite",
       "Rust",
       "Tauri",
       "Criptografia",
       "MongoDB",
       "Tailwind CSS",
       "CI/CD",
-      "Github Actions",
     ],
     demoUrl: "https://aegisvault.leonardo-reis.com",
     repoUrl: "https://github.com/leonardoReizz/aegis-vault",
+    featured: true,
   },
   {
     id: 112,
     title: "SentraAPI",
     description: "Plataforma de monitoramento para apis",
     image: "./sentra.png",
-    tags: [
-      "React",
-      "Vite",
-      "Next.js",
-      "Node.js",
-      "NestJS",
-      "BullMQ",
-      "MySQL",
-      "Tailwind CSS",
-      "Redis",
-      "Docker",
-      "CI/CD",
-    ],
+    tags: ["React", "Next.js", "NestJS", "BullMQ", "MySQL", "Redis", "Docker"],
     demoUrl: "https://sentraapi.com",
+    featured: true,
   },
-  // {
-  //   id: 111,
-  //   title: "Sysko",
-  //   description: "Plataforma de deploy automatizado de aplicações",
-  //   image: "./sysko.png",
-  //   tags: [
-  //     "React",
-  //     "Vite",
-  //     "Next.js",
-  //     "Node.js",
-  //     "Python",
-  //     "PostgreSQL",
-  //     "Tailwind CSS",
-  //     "Kubernetes",
-  //     "Docker",
-  //     "GitLab",
-  //     "CI/CD",
-  //   ],
-  //   demoUrl: "https://sentraapi.com",
-  // },
   {
     id: 11,
     title: "TouchABA",
     description: "Sistema para clinica que atuam com ABA",
     image: "./touch.png",
-    tags: ["React", "Node.js", "PostgreSQL", "Tailwind CSS", "Docker"],
+    tags: ["React", "Node.js", "PostgreSQL", "Docker"],
     demoUrl: "https://touchaba.com/",
   },
   {
     id: 1,
-    title: "Associação Aconchego",
+    title: "Associacao Aconchego",
     description: "Landing page para associacao aconchego",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtSgxTKerUly0tmfUuL45Am3dYN_zeB5cIfQ&s",
@@ -97,7 +64,7 @@ const projects: Project[] = [
     id: 2,
     title: "Nativesec",
     description:
-      "Aplicação web para gerenciamento de reservas com calendário interativo, notificações e relatórios personalizados.",
+      "Aplicacao web para gerenciamento com calendario interativo e relatorios.",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKb8RY8jQOqwCfxtFmcZtvc_G4m8iHITs2Uw&s",
     tags: ["TypeScript", "Next.js", "PostgreSQL", "Prisma"],
@@ -108,18 +75,14 @@ const projects: Project[] = [
     id: 3,
     title: "Gita",
     image: "https://gita.cloud/img/dalle.webp",
-    description:
-      "Sistema de gerenciamento e observabilidade para ambientes Kubernetes",
+    description: "Gerenciamento e observabilidade para Kubernetes",
     tags: [
       "React.JS",
       "Next.JS",
       "Express",
-      "TailwindCSS",
       "Docker",
       "MongoDB",
-      "Mysql",
       "RabbitMQ",
-      "Redis",
       "Stripe",
     ],
     demoUrl: "https://gita.cloud",
@@ -127,135 +90,181 @@ const projects: Project[] = [
   {
     id: 4,
     title: "Eslint-config",
-    description: "Configuracao pronta para eslint-react,node e next",
+    description: "Configuracao pronta para eslint-react, node e next",
     image: "https://cdn.buttercms.com/NFhF3dWBTf5wPnfTsdjR",
     tags: ["Vue.js", "Firebase", "Express", "TailwindCSS"],
     repoUrl: "https://cdn.buttercms.com/NFhF3dWBTf5wPnfTsdjR",
   },
 ];
 
+function ProjectCard({
+  project,
+  index,
+  visible,
+}: {
+  project: Project;
+  index: number;
+  visible: boolean;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    cardRef.current.style.transform = `perspective(1000px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) scale3d(1.02, 1.02, 1.02)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (!cardRef.current) return;
+    cardRef.current.style.transform =
+      "perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1,1,1)";
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={cn(
+        "spotlight-card group cursor-default tilt-card stagger-item",
+        project.featured && "bento-featured",
+        visible && "stagger-item-visible",
+      )}
+      style={{
+        transitionDelay: `${index * 100}ms`,
+        transition:
+          "transform 0.2s ease-out, opacity 0.7s cubic-bezier(0.16,1,0.3,1)",
+      }}
+    >
+      {/* Image */}
+      <div
+        className={cn(
+          "overflow-hidden relative",
+          project.featured ? "aspect-[16/10]" : "aspect-video",
+        )}
+      >
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[hsl(225_15%_6%)] via-transparent to-transparent" />
+
+        {/* Hover overlay with links */}
+        <div className="absolute inset-0 bg-primary/[0.05] opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-3">
+          {project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-colors duration-300"
+            >
+              <ExternalLinkIcon size={16} />
+            </a>
+          )}
+          {project.repoUrl && (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-colors duration-300"
+            >
+              <GithubIcon size={16} />
+            </a>
+          )}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-5">
+        <div className="flex items-start justify-between mb-2">
+          <h3
+            className={cn(
+              "font-bold group-hover:text-gradient transition-all duration-300",
+              project.featured ? "text-xl" : "text-lg",
+            )}
+          >
+            {project.title}
+          </h3>
+          <ArrowUpRightIcon
+            size={16}
+            className="text-muted-foreground/30 group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300 shrink-0 mt-1"
+          />
+        </div>
+        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+          {project.description}
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[11px] px-2 py-0.5 rounded-full text-muted-foreground/70 bg-white/[0.04] border border-white/[0.04]"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Projects() {
-  const [visibleItems, setVisibleItems] = useState<number[]>([]);
-  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const fallback = setTimeout(() => setVisible(true), 800);
+
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = Number(entry.target.getAttribute("data-id"));
-            setVisibleItems((prev) => [...prev, id]);
-          }
-        });
+        if (entries[0].isIntersecting) {
+          setVisible(true);
+          clearTimeout(fallback);
+        }
       },
-      { threshold: 0.2 },
+      { threshold: 0.02 },
     );
 
-    projectRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => {
-      projectRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
+      clearTimeout(fallback);
+      observer.disconnect();
     };
   }, []);
 
   return (
-    <section id="projects" className="section-padding bg-secondary/30">
+    <section
+      ref={sectionRef}
+      id="projects"
+      className="section-padding relative items-center flex justify-center"
+    >
       <div className="container">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <Badge variant="outline" className="mb-4">
-            Projetos
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Trabalhos <span className="text-primary">Recentes</span>
+        {/* Section header */}
+        <div className="flex flex-col items-center text-center mb-20">
+          <span className="text-xs font-medium tracking-[0.3em] uppercase text-primary mb-4 animate-fade-in">
+            Portfolio
+          </span>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+            Trabalhos <span className="text-gradient">Recentes</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Uma seleção dos meus trabalhos mais recentes, demonstrando minha
-            experiência com diferentes tecnologias e soluções.
+          <p className="text-muted-foreground max-w-lg text-base">
+            Uma selecao dos meus trabalhos mais recentes, demonstrando
+            experiencia com diferentes tecnologias.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Bento grid */}
+        <div className="bento-grid">
           {projects.map((project, index) => (
-            <div
+            <ProjectCard
               key={project.id}
-              // ref={(el) => (projectRefs.current[index] = el)}
-              data-id={project.id}
-              className={cn(
-                "bg-card rounded-2xl overflow-hidden hover-card-animation shadow-subtle border border-border/50",
-                visibleItems.includes(project.id)
-                  ? "stagger-item-visible"
-                  : "stagger-item",
-              )}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <div className="aspect-video w-full overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-apple hover:scale-105"
-                />
-              </div>
-
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-3">{project.title}</h3>
-                <p className="text-muted-foreground mb-4">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag) => (
-                    <Badge
-                      key={tag}
-                      variant="secondary"
-                      className="font-medium"
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-
-                <div className="flex gap-3">
-                  {project.demoUrl && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="gap-2"
-                      asChild
-                    >
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <ExternalLinkIcon size={16} />
-                        Demo
-                      </a>
-                    </Button>
-                  )}
-                  {project.repoUrl && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="gap-2"
-                      asChild
-                    >
-                      <a
-                        href={project.repoUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <GithubIcon size={16} />
-                        Código
-                      </a>
-                    </Button>
-                  )}
-                </div>
-              </div>
-            </div>
+              project={project}
+              index={index}
+              visible={visible}
+            />
           ))}
         </div>
       </div>
