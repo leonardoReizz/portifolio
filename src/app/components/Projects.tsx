@@ -32,7 +32,7 @@ const projects: Project[] = [
       "Stripe",
       "OpenAI",
     ],
-    demoUrl: "http://proposelylp.cap.leonardo-reis.com",
+    demoUrl: "https://proposelylp.cap.leonardo-reis.com",
     featured: true,
   },
   {
