@@ -150,7 +150,6 @@ function ProjectCard({
       onMouseLeave={handleMouseLeave}
       className={cn(
         "spotlight-card group cursor-default tilt-card stagger-item",
-        project.featured && "bento-featured",
         visible && "stagger-item-visible",
       )}
       style={{
@@ -160,12 +159,7 @@ function ProjectCard({
       }}
     >
       {/* Image */}
-      <div
-        className={cn(
-          "overflow-hidden relative",
-          project.featured ? "aspect-[16/10]" : "aspect-video",
-        )}
-      >
+      <div className="overflow-hidden relative aspect-video">
         <img
           src={project.image}
           alt={project.title}
@@ -277,8 +271,8 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* Bento grid */}
-        <div className="bento-grid">
+        {/* Projects grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map((project, index) => (
             <ProjectCard
               key={project.id}

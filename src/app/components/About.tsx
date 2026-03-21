@@ -170,27 +170,28 @@ export default function About() {
             Formacao & <span className="text-gradient">Experiencia</span>
           </h3>
 
-          <div className="relative pl-10">
-            {/* Vertical line - dark base */}
+          <div className="relative pl-12">
+            {/* Vertical line - solid base */}
             <div
-              className="absolute left-[7px] top-2 w-[2px] z-0"
+              className="absolute top-2 w-[2px] z-0"
               style={{
+                left: "7px",
                 bottom: "2rem",
-                background: "hsl(225 15% 15%)",
+                background: "hsl(225 15% 18%)",
               }}
             />
-            {/* Beam of light */}
+            {/* Beam of light traveling down */}
             <div
-              className="absolute left-[7px] top-2 w-[2px] z-[1] overflow-hidden"
-              style={{ bottom: "2rem" }}
+              className="absolute top-2 w-[2px] z-[1] overflow-hidden"
+              style={{ left: "7px", bottom: "2rem" }}
             >
               <div
                 className="absolute left-0 w-full"
                 style={{
-                  height: "60px",
+                  height: "80px",
                   background:
-                    "linear-gradient(to bottom, transparent, hsl(217 91% 60%), transparent)",
-                  animation: "beam-travel 3s ease-in-out infinite",
+                    "linear-gradient(to bottom, transparent, hsl(217 91% 60% / 0.9), transparent)",
+                  animation: "beam-travel 4s ease-in-out infinite",
                 }}
               />
             </div>
@@ -199,19 +200,20 @@ export default function About() {
               <div
                 key={item.id}
                 className={cn(
-                  "relative pb-10 last:pb-0 stagger-item",
+                  "relative pb-12 last:pb-0 stagger-item",
                   visible && "stagger-item-visible",
                 )}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                {/* Dot */}
+                {/* Dot - centered on the line (left:7px = center of 2px line, dot is 16px so offset -7px) */}
                 <div
                   className={cn(
-                    "absolute -left-10 top-5 w-4 h-4 rounded-full border-2 z-10",
+                    "absolute top-5 w-4 h-4 rounded-full border-2 z-10",
                     item.type === "experience"
                       ? "border-primary bg-primary shadow-[0_0_12px_hsl(217_91%_60%/0.5)]"
                       : "border-primary/40 bg-background",
                   )}
+                  style={{ left: "-1px" }}
                 />
 
                 {/* Card */}
