@@ -17,6 +17,25 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: 114,
+    title: "Proposely",
+    description:
+      "Plataforma SaaS para criação e gestão de propostas comerciais com IA, templates profissionais e múltiplos estilos de visualização.",
+    image: "./proposely.png",
+    tags: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Fastify",
+      "Prisma",
+      "PostgreSQL",
+      "Stripe",
+      "OpenAI",
+    ],
+    demoUrl: "http://proposelylp.cap.leonardo-reis.com",
+    featured: true,
+  },
+  {
     id: 113,
     title: "Aegis Vault",
     description: "Gerenciador de senhas multiplataforma para desktop",
