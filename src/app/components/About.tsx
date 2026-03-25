@@ -200,7 +200,7 @@ export default function About() {
               <div
                 key={item.id}
                 className={cn(
-                  "relative pb-12 last:pb-0 stagger-item",
+                  "relative pb-12 last:pb-0 stagger-item flex items-center justify-center w-full",
                   visible && "stagger-item-visible",
                 )}
                 style={{ transitionDelay: `${index * 150}ms` }}
@@ -208,16 +208,16 @@ export default function About() {
                 {/* Dot - centered on the line (left:7px = center of 2px line, dot is 16px so offset -7px) */}
                 <div
                   className={cn(
-                    "absolute top-5 w-4 h-4 rounded-full border-2 z-10",
+                    "absolute w-4 h-4 rounded-full border-2 z-10 -left-[48px]",
                     item.type === "experience"
                       ? "border-primary bg-primary shadow-[0_0_12px_hsl(217_91%_60%/0.5)]"
                       : "border-primary/40 bg-background",
                   )}
-                  style={{ left: "-1px" }}
+                  // style={{ left: "-1px" }}
                 />
 
                 {/* Card */}
-                <div className="spotlight-card p-5 group">
+                <div className="spotlight-card p-5 group w-full">
                   <div className="flex items-center gap-2 mb-3">
                     <div
                       className={cn(
