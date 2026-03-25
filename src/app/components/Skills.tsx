@@ -179,14 +179,14 @@ export default function Skills() {
     <section ref={sectionRef} id="skills" className="section-padding relative">
       <div className="container">
         {/* Section header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-center text-center mb-10 sm:mb-16 px-4 sm:px-0">
           <span className="text-xs font-medium tracking-[0.3em] uppercase text-primary mb-4">
             Skills
           </span>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6">
             Minha <span className="text-gradient">Especializacao</span>
           </h2>
-          <p className="text-muted-foreground max-w-lg text-base">
+          <p className="text-muted-foreground max-w-lg text-sm sm:text-base">
             Conjunto completo de habilidades tecnicas para solucoes robustas e
             elegantes.
           </p>
@@ -196,7 +196,7 @@ export default function Skills() {
       {/* Marquee skills */}
       <div
         className={cn(
-          "space-y-3 mb-20 transition-all duration-1000",
+          "max-md:w-screen space-y-2 sm:space-y-3 mb-10 sm:mb-20 transition-all duration-1000",
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10",
         )}
       >
@@ -206,7 +206,7 @@ export default function Skills() {
 
       {/* Category cards */}
       <div className="container">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 px-2 sm:px-0">
           {skillsData.map((category, index) => (
             <div
               key={category.id}

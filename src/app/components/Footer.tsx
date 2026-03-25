@@ -10,14 +10,14 @@ export default function Footer() {
       {/* Gradient line on top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
-      <div className="container py-10">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-6">
+      <div className="container py-6 sm:py-10 px-4 sm:px-6">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
             <a href="#home" className="text-lg font-bold tracking-tight">
               Leonardo<span className="text-gradient">Reis</span>
             </a>
-            <span className="hidden md:block w-px h-4 bg-white/[0.08]" />
-            <p className="text-xs text-muted-foreground/40">
+            <span className="hidden sm:block w-px h-4 bg-white/[0.08]" />
+            <p className="text-xs text-muted-foreground/40 text-center sm:text-left">
               Criando experiencias digitais extraordinarias
             </p>
           </div>

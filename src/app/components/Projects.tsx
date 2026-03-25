@@ -193,29 +193,24 @@ function ProjectCard({
       </div>
 
       {/* Content */}
-      <div className="p-5">
-        <div className="flex items-start justify-between mb-2">
-          <h3
-            className={cn(
-              "font-bold group-hover:text-gradient transition-all duration-300",
-              project.featured ? "text-xl" : "text-lg",
-            )}
-          >
+      <div className="p-2.5 sm:p-5">
+        <div className="flex items-start justify-between mb-1 sm:mb-2">
+          <h3 className="text-xs sm:text-lg font-bold group-hover:text-gradient transition-all duration-300">
             {project.title}
           </h3>
           <ArrowUpRightIcon
-            size={16}
-            className="text-muted-foreground/30 group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300 shrink-0 mt-1"
+            size={14}
+            className="text-muted-foreground/30 group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300 shrink-0 mt-0.5 hidden sm:block"
           />
         </div>
-        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+        <p className="text-[10px] sm:text-sm text-muted-foreground mb-2 sm:mb-4 leading-relaxed line-clamp-2 sm:line-clamp-none">
           {project.description}
         </p>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1 sm:gap-1.5">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[11px] px-2 py-0.5 rounded-full text-muted-foreground/70 bg-white/[0.04] border border-white/[0.04]"
+              className="text-[9px] sm:text-[11px] px-1.5 sm:px-2 py-0.5 rounded-full text-muted-foreground/70 bg-white/[0.04] border border-white/[0.04]"
             >
               {tag}
             </span>
@@ -258,21 +253,21 @@ export default function Projects() {
     >
       <div className="container">
         {/* Section header */}
-        <div className="flex flex-col items-center text-center mb-20">
+        <div className="flex flex-col items-center text-center mb-10 sm:mb-20 px-4 sm:px-0">
           <span className="text-xs font-medium tracking-[0.3em] uppercase text-primary mb-4 animate-fade-in">
             Portfolio
           </span>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6">
             Trabalhos <span className="text-gradient">Recentes</span>
           </h2>
-          <p className="text-muted-foreground max-w-lg text-base">
+          <p className="text-muted-foreground max-w-lg text-sm sm:text-base">
             Uma selecao dos meus trabalhos mais recentes, demonstrando
             experiencia com diferentes tecnologias.
           </p>
         </div>
 
         {/* Projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 sm:gap-4 px-2 sm:px-0">
           {projects.map((project, index) => (
             <ProjectCard
               key={project.id}

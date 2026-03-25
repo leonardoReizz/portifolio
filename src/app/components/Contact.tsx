@@ -76,7 +76,7 @@ export default function Contact() {
     {
       icon: <MapPinIcon className="h-5 w-5" />,
       label: "Localizacao",
-      value: "Minas Gerais, Brasil",
+      value: "Santa Catarina, Brasil",
       href: null,
     },
     {
@@ -97,19 +97,19 @@ export default function Contact() {
     <section ref={sectionRef} id="contact" className="section-padding relative">
       <div className="container">
         {/* Section header */}
-        <div className="flex flex-col items-center text-center mb-20">
+        <div className="flex flex-col items-center text-center mb-10 sm:mb-20 px-4 sm:px-0">
           <span className="text-xs font-medium tracking-[0.3em] uppercase text-primary mb-4">
             Contato
           </span>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6">
             Vamos <span className="text-gradient">Conversar</span>
           </h2>
-          <p className="text-muted-foreground max-w-lg text-base">
+          <p className="text-muted-foreground max-w-lg text-sm sm:text-base">
             Estou aberto a oportunidades de trabalho e colaboracoes.
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-5 gap-6">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6 px-2 sm:px-0">
           {/* Contact links - left side */}
           <div className="lg:col-span-2 space-y-3">
             {contactLinks.map((item, index) => {
@@ -161,7 +161,7 @@ export default function Contact() {
           {/* Form - right side */}
           <div
             className={cn(
-              "lg:col-span-3 spotlight-card p-6 md:p-8 transition-all duration-700",
+              "lg:col-span-3 spotlight-card p-4 sm:p-6 md:p-8 transition-all duration-700",
               visible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10",

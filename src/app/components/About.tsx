@@ -43,7 +43,7 @@ const timelineData: TimelineItem[] = [
   },
   {
     id: 4,
-    year: "2025 - 2027",
+    year: "2025 - 2026",
     title: "Pos Graduacao em Engenharia de Software",
     location: "Faculdade Descomplica Sul Americana",
     description: "",
@@ -131,7 +131,7 @@ export default function About() {
           <span className="text-xs font-medium tracking-[0.3em] uppercase text-primary mb-4">
             Sobre
           </span>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 px-4 sm:px-0">
             Transformando ideias em{" "}
             <span className="text-gradient">realidade</span>
           </h2>
@@ -144,7 +144,7 @@ export default function About() {
         </div>
 
         {/* Stats row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-24   ">
+        <div className="grid grid-cols12 md:grid-cols-4 gap-2 sm:gap-3 mb-16 sm:mb-24 px-2 sm:px-0">
           {stats.map((stat, index) => (
             <div
               key={index}
@@ -154,7 +154,7 @@ export default function About() {
               )}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">
+              <div className="text-2xl sm:text-4xl md:text-5xl font-bold text-gradient mb-2">
                 <AnimatedCounter value={stat.value} visible={visible} />
               </div>
               <p className="text-xs text-muted-foreground whitespace-pre-line leading-relaxed uppercase tracking-wider">
@@ -165,25 +165,24 @@ export default function About() {
         </div>
 
         {/* Timeline */}
-        <div className="max-w-2xl mx-auto">
-          <h3 className="text-center text-2xl font-bold mb-12">
+        <div className="max-w-2xl mx-auto px-4 sm:px-0">
+          <h3 className="text-center text-xl sm:text-2xl font-bold mb-8 sm:mb-12">
             Formacao & <span className="text-gradient">Experiencia</span>
           </h3>
 
-          <div className="relative pl-12">
-            {/* Vertical line - solid base */}
+          <div className="relative pl-8 sm:pl-12">
+            {/* Vertical line - solid base connecting all dots */}
             <div
-              className="absolute top-2 w-[2px] z-0"
+              className="absolute top-0 bottom-0 w-[2px] z-0"
               style={{
                 left: "7px",
-                bottom: "2rem",
                 background: "hsl(225 15% 18%)",
               }}
             />
             {/* Beam of light traveling down */}
             <div
-              className="absolute top-2 w-[2px] z-[1] overflow-hidden"
-              style={{ left: "7px", bottom: "2rem" }}
+              className="absolute top-0 bottom-0 w-[2px] z-[1] overflow-hidden"
+              style={{ left: "7px" }}
             >
               <div
                 className="absolute left-0 w-full"
@@ -200,24 +199,24 @@ export default function About() {
               <div
                 key={item.id}
                 className={cn(
-                  "relative pb-12 last:pb-0 stagger-item flex items-center justify-center w-full",
+                  "relative pb-8 sm:pb-12 last:pb-0 stagger-item flex items-center justify-center",
                   visible && "stagger-item-visible",
                 )}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                {/* Dot - centered on the line (left:7px = center of 2px line, dot is 16px so offset -7px) */}
+                {/* Dot - centered on the 2px line at left:7px. Dot=16px, so left = 7-8 = -1px from container */}
                 <div
                   className={cn(
-                    "absolute w-4 h-4 rounded-full border-2 z-10 -left-[48px]",
+                    "absolute w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 z-10",
                     item.type === "experience"
                       ? "border-primary bg-primary shadow-[0_0_12px_hsl(217_91%_60%/0.5)]"
                       : "border-primary/40 bg-background",
                   )}
-                  // style={{ left: "-1px" }}
+                  style={{ left: "calc(-1 * (3rem - 1px))" }}
                 />
 
                 {/* Card */}
-                <div className="spotlight-card p-5 group w-full">
+                <div className="spotlight-card p-4 sm:p-5 group w-full">
                   <div className="flex items-center gap-2 mb-3">
                     <div
                       className={cn(
