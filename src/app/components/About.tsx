@@ -135,7 +135,7 @@ export default function About() {
             Transformando ideias em{" "}
             <span className="text-gradient">realidade</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl text-base leading-relaxed">
+          <p className="text-muted-foreground max-w-2xl text-base leading-relaxed p-2">
             Desenvolvedor fullstack apaixonado por criar solucoes elegantes.
             Mais de 3 anos construindo aplicacoes web e moveis que combinam
             excelencia tecnica com design excepcional. Codigo limpo, escalavel e
@@ -170,10 +170,10 @@ export default function About() {
             Formacao & <span className="text-gradient">Experiencia</span>
           </h3>
 
-          <div className="relative pl-8 sm:pl-12">
+          <div className="relative pl-8 sm:pl-12 max-md:pl-0">
             {/* Vertical line - solid base connecting all dots */}
             <div
-              className="absolute top-0 bottom-0 w-[2px] z-0"
+              className="absolute top-0 bottom-0 w-[2px] z-0 max-md:hidden"
               style={{
                 left: "7px",
                 background: "hsl(225 15% 18%)",
@@ -185,7 +185,7 @@ export default function About() {
               style={{ left: "7px" }}
             >
               <div
-                className="absolute left-0 w-full"
+                className="absolute left-0 w-full max-md:hidden"
                 style={{
                   height: "80px",
                   background:
@@ -207,7 +207,7 @@ export default function About() {
                 {/* Dot - centered on the 2px line at left:7px. Dot=16px, so left = 7-8 = -1px from container */}
                 <div
                   className={cn(
-                    "absolute w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 z-10",
+                    "absolute w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 z-10 max-md:hidden",
                     item.type === "experience"
                       ? "border-primary bg-primary shadow-[0_0_12px_hsl(217_91%_60%/0.5)]"
                       : "border-primary/40 bg-background",
