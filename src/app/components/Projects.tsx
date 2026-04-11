@@ -17,6 +17,24 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: 115,
+    title: "ImovDigital",
+    description:
+      "Plataforma SaaS para imobiliarias com gestao de imoveis, site proprio e ferramentas de marketing digital.",
+    image: "./imovdigital.png",
+    tags: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Prisma",
+      "Tailwind CSS",
+    ],
+    demoUrl: "https://imovdigital.com.br",
+    featured: true,
+  },
+  {
     id: 114,
     title: "Proposely",
     description:
