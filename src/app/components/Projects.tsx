@@ -2,146 +2,14 @@
 
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { ExternalLinkIcon, GithubIcon, ArrowUpRightIcon } from "lucide-react";
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  demoUrl?: string;
-  repoUrl?: string;
-  featured?: boolean;
-}
-
-const projects: Project[] = [
-  {
-    id: 115,
-    title: "ImovDigital",
-    description:
-      "Plataforma SaaS para imobiliarias com gestao de imoveis, site proprio e ferramentas de marketing digital.",
-    image: "./imovdigital.png",
-    tags: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Node.js",
-      "PostgreSQL",
-      "Prisma",
-      "Tailwind CSS",
-    ],
-    demoUrl: "https://imovdigital.com.br",
-    featured: true,
-  },
-  {
-    id: 114,
-    title: "Proposely",
-    description:
-      "Plataforma SaaS para criação e gestão de propostas comerciais com IA, templates profissionais e múltiplos estilos de visualização.",
-    image: "./proposely.png",
-    tags: [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "Fastify",
-      "Prisma",
-      "PostgreSQL",
-      "Stripe",
-      "OpenAI",
-    ],
-    demoUrl: "https://proposelylp.cap.leonardo-reis.com",
-    featured: true,
-  },
-  {
-    id: 113,
-    title: "Aegis Vault",
-    description: "Gerenciador de senhas multiplataforma para desktop",
-    image: "./aegis.png",
-    tags: [
-      "React",
-      "Rust",
-      "Tauri",
-      "Criptografia",
-      "MongoDB",
-      "Tailwind CSS",
-      "CI/CD",
-    ],
-    demoUrl: "https://aegisvault.leonardo-reis.com",
-    repoUrl: "https://github.com/leonardoReizz/aegis-vault",
-    featured: true,
-  },
-  {
-    id: 112,
-    title: "SentraAPI",
-    description: "Plataforma de monitoramento para apis",
-    image: "./sentra.png",
-    tags: [
-      "React",
-      "Next.js",
-      "NestJS",
-      "BullMQ",
-      "RabbitMQ",
-      "MySQL",
-      "Redis",
-      "Docker",
-    ],
-    demoUrl: "https://sentra-web.cap.leonardo-reis.com",
-    featured: true,
-  },
-  {
-    id: 11,
-    title: "TouchABA",
-    description: "Sistema para clinica que atuam com ABA",
-    image: "./touch.png",
-    tags: ["React", "Node.js", "PostgreSQL", "Docker"],
-    demoUrl: "https://touchaba.com/",
-  },
-  {
-    id: 1,
-    title: "Associacao Aconchego",
-    description: "Landing page para associacao aconchego",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtSgxTKerUly0tmfUuL45Am3dYN_zeB5cIfQ&s",
-    tags: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
-    demoUrl: "https://associacaoaconchego.com/",
-  },
-  {
-    id: 2,
-    title: "Nativesec",
-    description:
-      "Aplicacao web para gerenciamento com calendario interativo e relatorios.",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKb8RY8jQOqwCfxtFmcZtvc_G4m8iHITs2Uw&s",
-    tags: ["TypeScript", "Next.js", "PostgreSQL", "Prisma"],
-    demoUrl: "https://nativesec.io",
-    repoUrl: "https://github.com/Nativesec/nativesec-desktop",
-  },
-  {
-    id: 3,
-    title: "Gita",
-    image: "https://gita.cloud/img/dalle.webp",
-    description: "Gerenciamento e observabilidade para Kubernetes",
-    tags: [
-      "React.JS",
-      "Next.JS",
-      "Express",
-      "Docker",
-      "MongoDB",
-      "RabbitMQ",
-      "Stripe",
-    ],
-    demoUrl: "https://gita.cloud",
-  },
-  {
-    id: 4,
-    title: "Eslint-config",
-    description: "Configuracao pronta para eslint-react, node e next",
-    image: "https://cdn.buttercms.com/NFhF3dWBTf5wPnfTsdjR",
-    tags: ["Vue.js", "Firebase", "Express", "TailwindCSS"],
-    repoUrl: "https://cdn.buttercms.com/NFhF3dWBTf5wPnfTsdjR",
-  },
-];
+import {
+  ExternalLinkIcon,
+  GithubIcon,
+  ArrowUpRightIcon,
+  LayersIcon,
+} from "lucide-react";
+import Link from "next/link";
+import { projects, type Project } from "@/app/data/projects";
 
 function ProjectCard({
   project,
@@ -216,6 +84,14 @@ function ProjectCard({
               <GithubIcon size={16} />
             </a>
           )}
+          {project.architecture && (
+            <Link
+              href={`/projects/${project.slug}`}
+              className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-colors duration-300"
+            >
+              <LayersIcon size={16} />
+            </Link>
+          )}
         </div>
       </div>
 
@@ -243,6 +119,15 @@ function ProjectCard({
             </span>
           ))}
         </div>
+        {project.architecture && (
+          <Link
+            href={`/projects/${project.slug}`}
+            className="mt-3 sm:mt-4 flex items-center gap-1.5 text-[10px] sm:text-xs text-primary/70 hover:text-primary transition-colors duration-300"
+          >
+            <LayersIcon size={12} />
+            Ver arquitetura
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -15,6 +15,15 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
+    id: 5,
+    year: "2026 - Presente",
+    title: "ImovDigital - Founder & Desenvolvedor",
+    location: "Remoto",
+    description:
+      "Fundador da ImovDigital, plataforma SaaS para imobiliarias com gestao de imoveis, site proprio e ferramentas de marketing digital. Arquitetura completa do produto usando React, Next.js, Node.js, PostgreSQL e Prisma.",
+    type: "experience",
+  },
+  {
     id: 0,
     year: "03/2025 - Presente",
     title: "Fulltrader - Desenvolvedor Fullstack",
@@ -33,20 +42,20 @@ const timelineData: TimelineItem[] = [
     type: "experience",
   },
   {
+    id: 4,
+    year: "2025 - 2026",
+    title: "Pos Graduacao em Engenharia de Software",
+    location: "Faculdade Descomplica Sul Americana",
+    description: "",
+    type: "education",
+  },
+  {
     id: 3,
     year: "2020 - 2025",
     title: "Bacharelado em Sistemas de Informacao",
     location: "Faculdade Descomplica Sul Americana",
     description:
       "Formacao em desenvolvimento de software, algoritmos, estruturas de dados e engenharia de software.",
-    type: "education",
-  },
-  {
-    id: 4,
-    year: "2025 - 2026",
-    title: "Pos Graduacao em Engenharia de Software",
-    location: "Faculdade Descomplica Sul Americana",
-    description: "",
     type: "education",
   },
 ];
