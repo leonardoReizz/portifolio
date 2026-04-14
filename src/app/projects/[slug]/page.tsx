@@ -283,7 +283,9 @@ export default function ProjectArchitecture() {
         <div
           className={cn("stagger-item", visible && "stagger-item-visible")}
           style={{
-            transitionDelay: `${200 + architecture.layers.length * 100 + 100}ms`,
+            transitionDelay: `${
+              200 + architecture.layers.length * 100 + 100
+            }ms`,
           }}
         >
           <h2 className="text-xl sm:text-2xl font-bold mb-6">
