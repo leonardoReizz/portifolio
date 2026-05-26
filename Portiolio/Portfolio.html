@@ -273,6 +273,16 @@
   }
   .card:hover .open { color: var(--accent); border-color: var(--accent); }
 
+  .card .live-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+    padding: 7px 14px; border-radius: 999px;
+    background: var(--accent); color: #000; font-weight: 700;
+    transition: background .2s, transform .2s;
+    cursor: none; white-space: nowrap; flex-shrink: 0;
+  }
+  .live-btn:hover { background: #fff; transform: translateY(-1px); }
+
   /* bento spans */
   .s-6x3 { grid-column: span 6; grid-row: span 3; }
   .s-3x2 { grid-column: span 3; grid-row: span 2; }
@@ -614,6 +624,7 @@
         </div>
         <div class="foot">
           <span class="open">Ver arquitetura →</span>
+          <span class="live-btn" data-demo="https://simclinic.com.br">↗ Abrir app</span>
         </div>
       </a>
 
@@ -681,6 +692,7 @@
         </div>
         <div class="foot">
           <span class="open">Ver arquitetura →</span>
+          <span class="live-btn" data-demo="https://sysko.io">↗ Abrir app</span>
         </div>
       </a>
 
@@ -697,7 +709,10 @@
             <span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Node</span><span class="chip">Postgres</span><span class="chip">Prisma</span><span class="chip">Tailwind</span>
           </div>
         </div>
-        <div class="foot"><span class="open">Ver arquitetura →</span></div>
+        <div class="foot">
+          <span class="open">Ver arquitetura →</span>
+          <span class="live-btn" data-demo="https://imovdigital.com.br">↗ App</span>
+        </div>
       </a>
 
       <!-- Gita -->
@@ -720,7 +735,10 @@
         <div class="chips">
           <span class="chip">Go</span><span class="chip">Python</span><span class="chip">Next.js</span><span class="chip">RabbitMQ</span><span class="chip">Mongo</span>
         </div>
-        <div class="foot"><span class="open">Ver caso →</span></div>
+        <div class="foot">
+          <span class="open">Ver caso →</span>
+          <span class="live-btn" data-demo="https://gita.cloud">↗ App</span>
+        </div>
       </a>
 
       <!-- Proposely -->
@@ -735,7 +753,7 @@
         </div>
         <div class="foot">
           <div class="chips"><span class="chip">Fastify</span><span class="chip">Stripe</span><span class="chip">OpenAI</span></div>
-          <span class="open">→</span>
+          <span class="live-btn" data-demo="https://proposelylp.cap.leonardo-reis.com">↗ App</span>
         </div>
       </a>
 
@@ -751,7 +769,7 @@
         </div>
         <div class="foot">
           <div class="chips"><span class="chip">Rust</span><span class="chip">Tauri</span><span class="chip">Mongo</span></div>
-          <span class="open">→</span>
+          <span class="live-btn" data-demo="https://aegisvault.leonardo-reis.com">↗ App</span>
         </div>
       </a>
 
@@ -767,7 +785,7 @@
         </div>
         <div class="foot">
           <div class="chips"><span class="chip">NestJS</span><span class="chip">BullMQ</span><span class="chip">RabbitMQ</span><span class="chip">Redis</span></div>
-          <span class="open">→</span>
+          <span class="live-btn" data-demo="https://sentra-web.cap.leonardo-reis.com">↗ App</span>
         </div>
       </a>
 
@@ -783,7 +801,7 @@
         </div>
         <div class="foot">
           <div class="chips"><span class="chip">React</span><span class="chip">Node</span><span class="chip">Postgres</span><span class="chip">Docker</span></div>
-          <span class="open">→</span>
+          <span class="live-btn" data-demo="https://touchaba.com/">↗ App</span>
         </div>
       </a>
 
@@ -1094,6 +1112,17 @@
       el.appendChild(s);
       requestAnimationFrame(() => setTimeout(() => s.classList.add('in'), 50));
     });
+  });
+
+  // ---------- Live demo buttons ----------
+  document.querySelectorAll('.live-btn[data-demo]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      window.open(btn.dataset.demo, '_blank', 'noopener,noreferrer');
+    });
+    btn.addEventListener('mouseenter', () => cursor.classList.add('is-link'));
+    btn.addEventListener('mouseleave', () => cursor.classList.remove('is-link'));
   });
 
   // ---------- Card pointer glow ----------
