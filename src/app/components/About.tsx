@@ -15,17 +15,8 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
-    id: 5,
-    year: "2026 - Presente",
-    title: "ImovDigital - Founder & Desenvolvedor",
-    location: "Remoto",
-    description:
-      "Fundador da ImovDigital, plataforma SaaS para imobiliarias com gestao de imoveis, site proprio e ferramentas de marketing digital. Arquitetura completa do produto usando React, Next.js, Node.js, PostgreSQL e Prisma.",
-    type: "experience",
-  },
-  {
     id: 0,
-    year: "03/2025 - Presente",
+    year: "03/2025 - 06/2026",
     title: "Fulltrader - Desenvolvedor Fullstack",
     location: "Sao Paulo, SP ( Remoto )",
     description:
